@@ -18,7 +18,7 @@ setup(
     author_email='jtonye@ymail.com',
     maintainer='Tonye Jack',
     maintainer_email='jtonye@ymail.com',
-    url='https://github.com/_/django-dynamic-model-validation',
+    url='https://github.com/jackton1/django-dynamic-model-validation.git',
     license='MIT/Apache-2.0',
     keywords=[
         '',
