@@ -1,0 +1,16 @@
+[run]
+source =
+    django_dynamic_model_validation
+    dynamic_validation
+    tests
+branch = True
+omit =
+    django_dynamic_model_validation/cli.py
+
+[report]
+exclude_lines =
+    no cov
+    no qa
+    noqa
+    pragma: no cover
+    if __name__ == .__main__.:
