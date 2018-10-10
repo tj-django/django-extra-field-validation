@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
-REQUIRES = []
+REQUIRES = ['Django>=2.1<3.0']
 
 version = __import__('django_dynamic_model_validation').__version__
 
@@ -20,9 +20,7 @@ setup(
     maintainer_email='jtonye@ymail.com',
     url='https://github.com/jackton1/django-dynamic-model-validation.git',
     license='MIT/Apache-2.0',
-    keywords=[
-        '',
-    ],
+    keywords=['django', 'model validation', 'django models'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -36,9 +34,8 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-
     install_requires=REQUIRES,
     tests_require=['coverage', 'pytest'],
-
-    packages=find_packages(),
+    extras_require={'development': ['pip-tools==3.1.0']},
+    packages=find_packages(exclude=['test*']),
 )
