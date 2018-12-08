@@ -5,13 +5,13 @@ from setuptools import find_packages, setup
 with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
-REQUIRES = ['Django>=2.1<3.0']
+REQUIRES = ['Django>1.10<3.0']
 
-version = __import__('django_dynamic_model_validation').__version__
+VERSION = '0.0.1'
 
 setup(
     name='django-dynamic-model-validation',
-    version=version,
+    version=VERSION,
     description='',
     long_description=readme,
     author='Tonye Jack',
@@ -20,7 +20,10 @@ setup(
     maintainer_email='jtonye@ymail.com',
     url='https://github.com/jackton1/django-dynamic-model-validation.git',
     license='MIT/Apache-2.0',
-    keywords=['django', 'model validation', 'django models'],
+    keywords=[
+        'django', 'model validation', 'django models', 'django object validation',
+        'field validation', 'conditional validation', 'cross field validation'
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
@@ -36,6 +39,9 @@ setup(
     ],
     install_requires=REQUIRES,
     tests_require=['coverage', 'pytest'],
-    extras_require={'development': ['pip-tools==3.1.0']},
-    packages=find_packages(exclude=['test*']),
+    extras_require={
+        'development': ['pip-tools==3.1.0'],
+        'test': ['pytest-django==3.4.4'],
+    },
+    packages=find_packages(exclude=['test*', '*_test']),
 )
