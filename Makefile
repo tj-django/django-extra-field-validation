@@ -53,9 +53,9 @@ tag-build:
 	@git tag v$(PACKAGE_VERSION)
 
 release-to-pypi: clean-build increase-version tag-build  ## Release project to pypi
-	@$(PYTHON_PIP) install -U twine
-	@$(PYTHON) setup.py sdist bdist_wheel
-	@twine upload dist/*
+	$(PYTHON_PIP) install -U twine
+	$(PYTHON) setup.py sdist bdist_wheel
+	twine upload dist/*
 
 # ----------------------------------------------------------
 # ---------- Upgrade project version (bumpversion)  --------
