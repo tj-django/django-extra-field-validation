@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
-REQUIRES = ['Django>1.10<3.0']
+REQUIRES = ['Django>1.10<3.0', 'future==0.17.1']
 
 VERSION = '0.0.1'
 
@@ -22,7 +22,8 @@ setup(
     license='MIT/Apache-2.0',
     keywords=[
         'django', 'model validation', 'django models', 'django object validation',
-        'field validation', 'conditional validation', 'cross field validation'
+        'field validation', 'conditional validation', 'cross field validation',
+        'django validation', 'django validators', 'django custom validation',
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -43,5 +44,5 @@ setup(
         'development': ['pip-tools==3.1.0'],
         'test': ['pytest-django==3.4.4'],
     },
-    packages=find_packages(exclude=['test*', '*_test']),
+    packages=find_packages(exclude=['test*', '*_test', 'demo'], include=['dynamic_validator']),
 )

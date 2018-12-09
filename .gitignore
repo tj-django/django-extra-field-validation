@@ -11,3 +11,4 @@ docs/build/
 venv/
 wheelhouse/
 .tox
+*.sqlite3
