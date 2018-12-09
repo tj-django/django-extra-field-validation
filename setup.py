@@ -52,14 +52,15 @@ if os.path.isfile(README_PATH):
 else:
     LONG_DESCRIPTION = ''
 
-VERSION = (0, 0, 1)
+VERSION = (0, 0, 0)
 
 version = '.'.join(map(str, VERSION))
 
 setup(
     name='django-dynamic-model-validation',
     version=version,
-    description='',
+    description='Extra django model validation.',
+    python_requires='>=2.6',
     long_description=readme,
     author='Tonye Jack',
     author_email='jtonye@ymail.com',

@@ -2,3 +2,4 @@ include LICENSE-APACHE
 include LICENSE-MIT
 include README.rst
 recursive-include dynamic_validator *.py *.html *.css *.js
+prune dynamic_validator/tests.py
