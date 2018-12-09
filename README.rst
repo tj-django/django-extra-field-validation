@@ -1,8 +1,12 @@
+.. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
+    :target: https://badge.fury.io/py/django-dynamic-model-validation
+.. image:: https://travis-ci.org/jackton1/django-dynamic-model-validation.svg?branch=master
+    :target: https://travis-ci.org/jackton1/django-dynamic-model-validation
+    
 django-dynamic-model-validation
 ===============================
 
-.. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
-    :target: https://badge.fury.io/py/django-dynamic-model-validation
+
 
 .. contents:: **Table of Contents**
     :backlinks: none
