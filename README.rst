@@ -51,6 +51,7 @@ required field validation etc.
 This is done using model attributes below.
 
 .. code-block:: python
+
     #  Using a list/iterable list: [['a', 'b'], ['c', 'd']] which validates that a field required from each section.
     REQUIRED_TOGGLE_FIELDS = []
 
@@ -76,6 +77,7 @@ This is done using model attributes below.
 ***********************************************************
 
 .. code-block:: python
+
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
 
@@ -103,6 +105,7 @@ This is done using model attributes below.
 *******************************************************
 
 .. code-block:: python
+
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
 
@@ -126,9 +129,10 @@ This is done using model attributes below.
 
 
 [Validates] That an instance can be created without optional fields but should only have one value if any of the optional fields are provided.
-*************************************************************************************************************************
+**********************************************************************************************************************************************
 
 .. code-block:: python
+
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
 
@@ -159,6 +163,7 @@ This is done using model attributes below.
 ****************************************************************************************************
 
 .. code-block:: python
+
     from django.db import models
     from django.conf import settings
     from dynamic_validator import ModelFieldRequiredMixin
@@ -193,6 +198,7 @@ This is done using model attributes below.
 *************************************************************************************************************************
 
 .. code-block:: python
+
     from django.db import models
     from django.conf import settings
     from dynamic_validator import ModelFieldRequiredMixin
