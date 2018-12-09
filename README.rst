@@ -5,6 +5,8 @@
 .. image:: https://api.codacy.com/project/badge/Grade/33797e94524e4277b476c051618ad495
     :target: https://www.codacy.com/app/jackton1/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackton1/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade
 
+Extra model validation.
+
 django-dynamic-model-validation
 ===============================
 
@@ -15,9 +17,8 @@ django-dynamic-model-validation
 
 Introduction
 ------------
-When faced with a need to implement reusable validation logic for forms and models.
-This package aims to provide tools needed to define validation logic once which can be leveraged using
-django forms, test case, API implementation or any model operation that requires saving data to the
+This package aims to provide tools needed to define custom field validation logic once which can be used independently or with
+django forms, test cases, API implementation or any model operation that requires saving data to the
 database.
 
 This can also be extended by defining table check constraints if needed but currently validation
@@ -65,7 +66,8 @@ This is done using model attributes below.
     # [(condition, [fields]), (condition, fields)]
 
     # Using a callable [(lambda instance: instance.is_admin, ['a', 'd'])]
-    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] (Note: This can be better handled using    REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
+    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] 
+    # (Note: This can also be handled using REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
 
     # Validates that all fields are present if the condition is True
     CONDITIONAL_REQUIRED_FIELDS = []
