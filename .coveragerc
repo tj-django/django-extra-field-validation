@@ -7,6 +7,7 @@ omit =
     setup.py
     manage.py
     dynamic_validator/apps.py
+    dynamic_validator/tests.py
 branch = True
 
 [report]
