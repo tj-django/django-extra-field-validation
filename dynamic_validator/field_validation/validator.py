@@ -60,10 +60,8 @@ class ModelFieldRequiredMixin(object):
                         is_valid_condition = condition if isinstance(condition, bool) else False
                         if callable(condition):
                             is_valid_condition = condition(self)
-                        field_value_dict = {
-                            fname: getattr(self, fname)
-                            for fname in fields if getattr(self, fname) not in self._EMPTY_VALUES
-                        }
+                        field_value_dict = dict([(fname, getattr(self, fname)) for fname in fields if
+                                                 getattr(self, fname) not in self._EMPTY_VALUES])
                         missing_fields = filter(lambda fn: fn not in field_value_dict.keys(), fields)
 
                         if is_valid_condition:
@@ -71,9 +69,11 @@ class ModelFieldRequiredMixin(object):
                             if not field_value_dict:
                                 if len(fields) > 1:
                                     msg = (
-                                        'Please provide a valid value for the following fields: {0}'.format(field_names)
+                                        'Please provide a valid value for the following fields:'
+                                        ' {0}'.format(field_names)
                                         if not validate_one else
-                                        'Please provide a valid value for any of the following fields: {0}'.format(field_names)
+                                        'Please provide a valid value for any of the following'
+                                        ' fields: {0}'.format(field_names)
                                     )
                                     errors.update(self._add_error(NON_FIELD_ERRORS, msg))
                                 else:
@@ -82,10 +82,16 @@ class ModelFieldRequiredMixin(object):
                                 break
                             if not validate_one:
                                 for missing_field in missing_fields:
-                                    msg = 'Please provide a value for: "{missing_field}"'.format(missing_field=missing_field)
+                                    msg = (
+                                        'Please provide a value for: "{missing_field}"'
+                                        .format(missing_field=missing_field)
+                                    )
                                     errors.update(self._add_error(missing_field, msg))
                             elif validate_one and len(fields) - 1 != len(list(missing_fields)):
-                                msg = ('Please provide only one of the following fields: {0}'.format(field_names))
+                                msg = (
+                                    'Please provide only one of the following fields: {0}'
+                                    .format(field_names)
+                                )
                                 errors.update(self._add_error(NON_FIELD_ERRORS, msg))
             except ValueError:
                 pass
@@ -93,9 +99,9 @@ class ModelFieldRequiredMixin(object):
                 if errors:
                     raise error_class(errors)
 
-    def _add_error(self, field, msg, code='required', error_class=ValidationError):
-        errors = {}
-        errors[field] = error_class(_(msg), code=code)
+    @staticmethod
+    def _add_error(field, msg, code='required', error_class=ValidationError):
+        errors = {field: error_class(_(msg), code=code)}
         return errors
 
     def _clean_required_and_optional_fields(self, exclude=None, context=None):
@@ -125,7 +131,10 @@ class ModelFieldRequiredMixin(object):
                             if raw_value not in f.empty_values:
                                 found.append({f.name: raw_value})
                             elif raw_value in f.empty_values and f.has_default():
-                                if isinstance(f, models.CharField) and f.get_default() not in f.empty_values:
+                                if all([
+                                    isinstance(f, models.CharField),
+                                    f.get_default() not in f.empty_values
+                                ]):
                                     found.append({f.name: f.get_default()})
 
                     for optional_toggle_field in self.OPTIONAL_TOGGLE_FIELDS:
@@ -137,8 +146,14 @@ class ModelFieldRequiredMixin(object):
                     fields_str = '\n, '.join([
                         self.field_to_str(fields) for fields in self.REQUIRED_TOGGLE_FIELDS
                     ])
-                    fields_str = '\n {0}'.format(fields_str) if len(self.REQUIRED_TOGGLE_FIELDS) > 1 else fields_str
-                    msg = 'Please provide a valid value for any of the following fields: {fields_str}'.format(fields_str=fields_str)
+                    fields_str = (
+                        '\n {0}'.format(fields_str) if len(self.REQUIRED_TOGGLE_FIELDS) > 1
+                        else fields_str
+                    )
+                    msg = (
+                        'Please provide a valid value for any of the following fields: {fields_str}'
+                        .format(fields_str=fields_str)
+                    )
                     errors.update(self._add_error(NON_FIELD_ERRORS, msg))
                 else:
                     found_keys = [k for item in found for k in item.keys()]
