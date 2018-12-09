@@ -117,7 +117,7 @@ This is done using model attributes below.
     ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 
-[Validates] That an instance can be created without optional fields but should only have one value is any of the optional fields are provided.
+[Validates] That an instance can be created without optional fields but should only have one value if any of the optional fields are provided.
 *************************************************************************************************************************
 
 .. code-block:: python
