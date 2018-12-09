@@ -1,7 +1,10 @@
 [run]
-source = .
+source =
+    demo
+    django_dynamic_model_validation
+    dynamic_validator
 omit =
-    .tox/
+    .tox
     demo/apps.py
     django_dynamic_model_validation/wsgi.py
     setup.py
