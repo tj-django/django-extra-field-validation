@@ -3,7 +3,7 @@ source =
     django_dynamic_model_validation
     dynamic_validation
 omit =
-    dynamic_validation/test*
+    django_dynamic_model_validation/wsgi.py
 branch = True
 
 [report]
