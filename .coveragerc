@@ -1,6 +1,7 @@
 [run]
 source = .
 omit =
+    .tox/
     demo/apps.py
     django_dynamic_model_validation/wsgi.py
     setup.py
