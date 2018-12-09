@@ -64,8 +64,7 @@ This is done using model attributes below.
     CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 
 
-
-> [Validates] That only one of the fields should be provided.
+#### [Validates] That only one of the fields should be provided.
 
 .. code-block:: python
     from django.db import models
@@ -91,7 +90,7 @@ This is done using model attributes below.
     ...
     ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
 
-> [Validates] That a field without a default is required.
+#### [Validates] That a field without a default is required.
 
 .. code-block:: python
     from django.db import models
@@ -116,7 +115,7 @@ This is done using model attributes below.
     ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 
-> [Validates] That an instance can be created without optional fields but should only have one value is any of the optional fields are provided.
+#### [Validates] That an instance can be created without optional fields but should only have one value is any of the optional fields are provided.
 
 .. code-block:: python
     from django.db import models
@@ -144,7 +143,7 @@ This is done using model attributes below.
     ...
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
-> [Validates] That if the user is active (ie. instance.user.is_active) both fields should be provided.
+#### [Validates] That if the user is active (ie. instance.user.is_active) both fields should be provided.
 
 .. code-block:: python
     from django.db import models
@@ -177,7 +176,7 @@ This is done using model attributes below.
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
-> [Validates] That if the user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
+#### [Validates] That if the user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
 
 .. code-block:: python
     from django.db import models
