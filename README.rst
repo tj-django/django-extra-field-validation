@@ -66,7 +66,8 @@ This is done using model attributes below.
     # [(condition, [fields]), (condition, fields)]
 
     # Using a callable [(lambda instance: instance.is_admin, ['a', 'd'])]
-    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] (Note: This can be better handled using    REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
+    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] 
+    # (Note: This can be better handled using REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
 
     # Validates that all fields are present if the condition is True
     CONDITIONAL_REQUIRED_FIELDS = []
