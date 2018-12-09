@@ -12,3 +12,4 @@ venv/
 wheelhouse/
 .tox
 *.sqlite3
+.DS_*

@@ -2,9 +2,9 @@
 
 .DEFAULT_GOAL := help
 
-PYTHON	:= /usr/bin/env python3
+PYTHON	:= /usr/bin/env python
 MANAGE_PY   := $(PYTHON) manage.py
-PYTHON_PIP  := /usr/bin/env pip3
+PYTHON_PIP  := /usr/bin/env pip
 PIP_COMPILE := /usr/bin/env pip-compile
 PART := patch
 PACKAGE_VERSION = $(shell $(PYTHON) setup.py --version)
