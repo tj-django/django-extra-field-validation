@@ -1,9 +1,11 @@
 [run]
-source =
-    django_dynamic_model_validation
-    dynamic_validation
+source = .
 omit =
+    demo/apps.py
     django_dynamic_model_validation/wsgi.py
+    setup.py
+    manage.py
+    dynamic_validator/apps.py
 branch = True
 
 [report]
