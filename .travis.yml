@@ -1,39 +1,36 @@
 language: python
 sudo: false
-
 matrix:
   include:
-    - python: 2.7
-      env: TOXENV=py27
-    - python: 3.4
-      env: TOXENV=py34
-    - python: 3.5
-      env: TOXENV=py35
-    - python: 3.5-dev
-      env: TOXENV=py35
-    - python: 3.6
-      env: TOXENV=py36
-    - python: 3.6-dev
-      env: TOXENV=py36
-    - python: 3.7
-      env: TOXENV=py37
-      dist: xenial
-      sudo: true
-    - python: pypy
-      env: TOXENV=ALL
-    - python: pypy3
-      env: TOXENV=ALL
-
+  - python: 2.7
+    env: TOXENV=py27
+  - python: 3.4
+    env: TOXENV=py34
+  - python: 3.5
+    env: TOXENV=py35
+  - python: 3.5-dev
+    env: TOXENV=py35
+  - python: 3.6
+    env: TOXENV=py36
+  - python: 3.6-dev
+    env: TOXENV=py36
+  - python: 3.7
+    env: TOXENV=py37
+    dist: xenial
+    sudo: true
+  - python: pypy
+    env: TOXENV=ALL
+  - python: pypy3
+    env: TOXENV=ALL
 notifications:
   email:
     recipients:
-      - jtonye@ymail.com
-
+    - jtonye@ymail.com
 env:
+  matrix:
   - DJANGO_SETTINGS_MODULE=django_dynamic_model_validation.settings
-
+  - secure: cu1NzEeURS/zlnljlqCQ5kb0TI3AJQJBQHfED7OgrqsnXGT2sOPdK8SxrHIuHnetlirwx9fcg+U+1iZUNi++/n8mgPpYKiC6jFqGvS0EToTCuVESxL/AY4MFqs7le5o5OX1Uc49tgjmkNJamDIgnMB5q/p123MgmqBZPVG54jh9ptoyifoRP/XxLRo5TwomLlSOEr/HyqGruuluzlqHL41i2e49/UV72PMpFVVrcPpuDdT+5kZq9KZRlOj5ZZl81ez+x9WdWhqCIdCVGeuyuNwldfH3GeNU6evEKOWcIm0zLiDRT1DLe0aiVc1PRL02JcFko65cOcXib47rIdElBAjyZsyoQh09P42t4dbybOnusIqOubNLmupm/OT6ato7KYjOFCHKM5d3cCrdoYuL7NLgvrXY+zmVBppzttX99/CiXYckRcij2NXYP0VH36DU09ks1XRDAU4AYCgL90Zf7nKOEZwSGtnWmrkVIXmgHXyU4PrKZqcdfeInRazRJye9i+DteqBaMF3ejbMMxFUgesWkK66UF3NWLHaUdcIzWSG78/lnhUH9jEj5QLE4ov5SynkNVZZv3RhfW+t5/4HumGdxsKiscowLWv5L2Pe8ZIR4IgIn3zv/8mwxdnNO0MAlCRpiPtC+NVKGxXH3sueQsh5zvMNMvTuSlQSfeKDLIYIQ=
 install:
-  - make install-test
-
+- make install-test
 script:
-  - tox
+- tox
