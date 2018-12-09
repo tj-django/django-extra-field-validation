@@ -56,7 +56,7 @@ This is done using model attributes below.
     # [(condition, [fields]), (condition, fields)]
 
     # Using a callable [(lambda instance: instance.is_admin, ['a', 'd'])]
-    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] (Note: This can be better handled using REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
+    # Using a boolean [(True, ['b', 'c']), (True, ['d', f])] (Note: This can be better handled using    REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
 
     # Validates that all fields are present if the condition is True
     CONDITIONAL_REQUIRED_FIELDS = []
@@ -66,7 +66,7 @@ This is done using model attributes below.
 
 
 > [Validates] That only one of the fields should be provided.
----
+
 .. code-block:: python
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
@@ -91,9 +91,8 @@ This is done using model attributes below.
     ...
     ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
 
----
 > [Validates] That a field without a default is required.
----
+
 .. code-block:: python
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
@@ -116,9 +115,9 @@ This is done using model attributes below.
     ...
     ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
----
+
 > [Validates] That an instance can be created without optional fields but should only have one value is any of the optional fields are provided.
----
+
 .. code-block:: python
     from django.db import models
     from dynamic_validator import ModelFieldRequiredMixin
@@ -145,9 +144,8 @@ This is done using model attributes below.
     ...
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
----
 > [Validates] That if the user is active (ie. instance.user.is_active) both fields should be provided.
----
+
 .. code-block:: python
     from django.db import models
     from django.conf import settings
@@ -179,9 +177,8 @@ This is done using model attributes below.
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
----
 > [Validates] That if the user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
----
+
 .. code-block:: python
     from django.db import models
     from django.conf import settings
