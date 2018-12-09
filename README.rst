@@ -5,6 +5,8 @@
 .. image:: https://api.codacy.com/project/badge/Grade/33797e94524e4277b476c051618ad495
     :target: https://www.codacy.com/app/jackton1/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackton1/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade
 
+Extra model validation.
+
 django-dynamic-model-validation
 ===============================
 
