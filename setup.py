@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
-install_requires = ['Django>1.10,>=2.0.2,<3.0', 'future==0.17.1']
+install_requires = ['Django>=1.11.10', 'future==0.17.1']
 
 test_requires = [
     'tox==2.9.1',
@@ -87,9 +87,6 @@ setup(
     ],
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
-    extras_require={
-        'development': [],
-        'test': test_requires,
-    },
+    extras_require=extras_require,
     packages=find_packages(exclude=['test*', '*_test', 'demo'], include=['dynamic_validator']),
 )
