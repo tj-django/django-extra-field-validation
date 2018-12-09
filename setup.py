@@ -40,11 +40,11 @@ extras_require = {
 }
 
 BASE_DIR = os.path.dirname(__file__)
-README_PATH = os.path.join(BASE_DIR, 'README.md')
+README_PATH = os.path.join(BASE_DIR, 'README.rst')
 
 LONG_DESCRIPTION_TYPE = 'text/markdown'
 if os.path.isfile(README_PATH):
-    with open(README_PATH) as f:
+    with open(README_PATH, encoding='utf-8') as f:
         LONG_DESCRIPTION = f.read()
 else:
     LONG_DESCRIPTION = ''
