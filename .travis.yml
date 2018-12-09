@@ -1,0 +1,37 @@
+language: python
+sudo: false
+
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=py27
+    - python: 3.4
+      env: TOXENV=py34
+    - python: 3.5
+      env: TOXENV=py35
+    - python: 3.5-dev
+      env: TOXENV=py35
+    - python: 3.6
+      env: TOXENV=py36
+    - python: 3.6-dev
+      env: TOXENV=py36
+    - python: 3.7
+      env: TOXENV=py37
+    - python: pypy
+      env: TOXENV=ALL
+    - python: pypy3
+      env: TOXENV=ALL
+
+notifications:
+  email:
+    recipients:
+      - jtonye@ymail.com
+
+env:
+  - DJANGO_SETTINGS_MODULE=django_dynamic_model_validation.settings
+
+install:
+  - make install-test
+
+script:
+  - tox

@@ -1,3 +1,4 @@
+import os
 from io import open
 
 from setuptools import find_packages, setup
@@ -5,13 +6,59 @@ from setuptools import find_packages, setup
 with open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
-REQUIRES = ['Django>1.10<3.0', 'future==0.17.1']
+install_requires = ['Django>1.10,>=2.0.2,<3.0', 'future==0.17.1']
 
-VERSION = '0.0.1'
+test_requires = [
+    'tox==2.9.1',
+    'pytest-django==3.4.4',
+    'pluggy>=0.7',
+    'mock==2.0.0',
+    'codacy-coverage==1.3.10',
+]
+
+deploy_requires = [
+    'bumpversion==0.5.3',
+]
+
+lint_requires = [
+    'flake8==3.4.1',
+    'yamllint==1.10.0',
+    'isort==4.2.15',
+]
+
+local_dev_requires = [
+    'pip-tools==3.1.0',
+]
+
+extras_require = {
+    'development': [
+        local_dev_requires,
+        install_requires,
+        test_requires,
+        lint_requires,
+    ],
+    'test': test_requires,
+    'lint': lint_requires,
+    'deploy': deploy_requires,
+}
+
+BASE_DIR = os.path.dirname(__file__)
+README_PATH = os.path.join(BASE_DIR, 'README.md')
+
+LONG_DESCRIPTION_TYPE = 'text/markdown'
+if os.path.isfile(README_PATH):
+    with open(README_PATH) as f:
+        LONG_DESCRIPTION = f.read()
+else:
+    LONG_DESCRIPTION = ''
+
+VERSION = (0, 0, 0)
+
+version = '.'.join(map(str, VERSION))
 
 setup(
     name='django-dynamic-model-validation',
-    version=VERSION,
+    version=version,
     description='',
     long_description=readme,
     author='Tonye Jack',
@@ -38,11 +85,11 @@ setup(
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
     ],
-    install_requires=REQUIRES,
+    install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
     extras_require={
-        'development': ['pip-tools==3.1.0'],
-        'test': ['pytest-django==3.4.4'],
+        'development': [],
+        'test': test_requires,
     },
     packages=find_packages(exclude=['test*', '*_test', 'demo'], include=['dynamic_validator']),
 )

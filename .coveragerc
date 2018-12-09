@@ -2,10 +2,9 @@
 source =
     django_dynamic_model_validation
     dynamic_validation
-    tests
-branch = True
 omit =
-    django_dynamic_model_validation/cli.py
+    dynamic_validation/test*
+branch = True
 
 [report]
 exclude_lines =
