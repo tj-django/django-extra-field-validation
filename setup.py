@@ -3,9 +3,6 @@ from io import open
 
 from setuptools import find_packages, setup
 
-with open('README.rst', 'r', encoding='utf-8') as f:
-    readme = f.read()
-
 install_requires = ['Django>=1.11.10', 'future==0.17.1']
 
 test_requires = [
@@ -61,7 +58,8 @@ setup(
     version=version,
     description='Extra django model validation.',
     python_requires='>=2.6',
-    long_description=readme,
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type=LONG_DESCRIPTION_TYPE,
     author='Tonye Jack',
     author_email='jtonye@ymail.com',
     maintainer='Tonye Jack',
@@ -79,12 +77,16 @@ setup(
         'License :: OSI Approved :: MIT License',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
+        'Topic :: Internet :: WWW/HTTP',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
+        'Framework :: Django :: 1.11',
+        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
     ],
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
