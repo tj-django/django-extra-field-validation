@@ -132,8 +132,8 @@ This is done using model attributes below.
     ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 
-[Validates] That an instance can be created without optional fields but should only have one value if any of the optional fields are provided.
-**********************************************************************************************************************************************
+[Validates] That optional fields should only have one value if provided.
+************************************************************************
 
 .. code-block:: python
 
@@ -163,8 +163,8 @@ This is done using model attributes below.
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
 
-[Validates] That if the user is active (ie. instance.user.is_active) both fields should be provided.
-****************************************************************************************************
+[Validates] That when user is active (ie. instance.user.is_active) both fields should be provided.
+**************************************************************************************************
 
 .. code-block:: python
 
@@ -198,7 +198,7 @@ This is done using model attributes below.
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
-[Validates] That if the user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
+[Validates] That when a user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
 *************************************************************************************************************************
 
 .. code-block:: python
