@@ -163,8 +163,8 @@ This is done using model attributes below.
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
 
-[Validates] That when user is active (ie. instance.user.is_active) both fields should be provided.
-**************************************************************************************************
+[Validates] That when a user is active (ie. instance.user.is_active) both fields should be provided.
+****************************************************************************************************
 
 .. code-block:: python
 
