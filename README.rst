@@ -198,8 +198,8 @@ This is done using model attributes below.
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
-[Validates] That when a user is active (ie. instance.user.is_active) any of the fields should be provided (i.e only one).
-*************************************************************************************************************************
+[Validates] That when a user is active (ie. instance.user.is_active) any of the fields should be provided.
+**********************************************************************************************************
 
 .. code-block:: python
 
