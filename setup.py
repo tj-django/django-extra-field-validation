@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 install_requires = ['future==0.17.1']
 
 test_requires = [
-    'tox==2.9.1',
+    'tox==3.1.2',
     'pytest-django==3.4.4',
     'pluggy>=0.7',
     'mock==2.0.0',
