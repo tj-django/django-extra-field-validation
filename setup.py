@@ -3,10 +3,10 @@ from io import open
 
 from setuptools import find_packages, setup
 
-install_requires = ['Django>=1.11.10', 'future==0.17.1']
+install_requires = ['future==0.17.1']
 
 test_requires = [
-    'tox==2.9.1',
+    'tox==3.1.2',
     'pytest-django==3.4.4',
     'pluggy>=0.7',
     'mock==2.0.0',
@@ -25,6 +25,7 @@ lint_requires = [
 ]
 
 local_dev_requires = [
+    'Django>=1.11.18',
     'pip-tools==3.1.0',
 ]
 
@@ -38,6 +39,7 @@ extras_require = {
     'test': test_requires,
     'lint': lint_requires,
     'deploy': deploy_requires,
+    'tox': local_dev_requires,
 }
 
 BASE_DIR = os.path.dirname(__file__)

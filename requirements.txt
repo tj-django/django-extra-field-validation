@@ -4,5 +4,4 @@
 #
 #    pip-compile --output-file requirements.txt setup.py
 #
-django==1.11.17
-pytz==2018.7              # via django
+future==0.17.1

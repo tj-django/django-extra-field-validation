@@ -13,3 +13,4 @@ wheelhouse/
 .tox
 *.sqlite3
 .DS_*
+pip-wheel-metadata/
