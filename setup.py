@@ -39,6 +39,7 @@ extras_require = {
     'test': test_requires,
     'lint': lint_requires,
     'deploy': deploy_requires,
+    'tox': local_dev_requires,
 }
 
 BASE_DIR = os.path.dirname(__file__)
