@@ -248,3 +248,8 @@ django-dynamic-model-validation is distributed under the terms of both
 - `Apache License, Version 2.0 <https://choosealicense.com/licenses/apache-2.0>`_
 
 at your option.
+
+
+.. image:: https://api.codacy.com/project/badge/Grade/a919fdbeb90d4e138b382ce387023c9e
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/app/jackton1/django-dynamic-model-validation?utm_source=github.com&utm_medium=referral&utm_content=jackton1/django-dynamic-model-validation&utm_campaign=Badge_Grade_Dashboard
