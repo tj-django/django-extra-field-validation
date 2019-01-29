@@ -27,6 +27,7 @@ lint_requires = [
 local_dev_requires = [
     'Django>=1.11.18',
     'pip-tools==3.1.0',
+    'check-manifest==0.37',
 ]
 
 extras_require = {
@@ -92,5 +93,5 @@ setup(
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
     extras_require=extras_require,
-    packages=find_packages(exclude=['test*', '*_test', 'demo'], include=['dynamic_validator']),
+    packages=find_packages(exclude=['tests', '*_tests', 'demo']),
 )
