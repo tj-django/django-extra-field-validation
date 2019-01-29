@@ -93,5 +93,5 @@ setup(
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
     extras_require=extras_require,
-    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests*', 'demo']),
+    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests*', 'demo', 'manage.*']),
 )
