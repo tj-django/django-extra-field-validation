@@ -1,5 +1,5 @@
 import os
-from io import open
+import io
 
 from setuptools import find_packages, setup
 
@@ -47,7 +47,7 @@ BASE_DIR = os.path.dirname(__file__)
 README_PATH = os.path.join(BASE_DIR, 'README.rst')
 
 if os.path.isfile(README_PATH):
-    with open(README_PATH, encoding='utf-8') as f:
+    with io.open(README_PATH, encoding='utf-8') as f:
         LONG_DESCRIPTION = f.read()
 else:
     LONG_DESCRIPTION = ''
