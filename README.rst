@@ -77,8 +77,8 @@ This is done using model attributes below.
     CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 
 
-[Validates] That one of the listed fields are be provided.
-**********************************************************
+[Validates] That only one of the listed fields is provided.
+***********************************************************
 
 .. code-block:: python
 
