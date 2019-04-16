@@ -15,14 +15,19 @@ matrix:
     env: TOXENV=py36
   - python: 3.6-dev
     env: TOXENV=py36
-  - python: 3.7
+  - name: "Python 3.7 on Xenial Linux"
+    python: 3.7
     env: TOXENV=py37
     dist: xenial
     sudo: true
-  - python: pypy
+  - name: "PyPy on Trusty Linux"
+    python: pypy
     env: TOXENV=ALL
+    dist: trusty
+  - name: "PyPy3 on Trusty Linux"
   - python: pypy3
     env: TOXENV=ALL
+    dist: trusty
 notifications:
   email:
     recipients:
