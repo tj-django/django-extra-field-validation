@@ -2,8 +2,9 @@ language: python
 sudo: false
 addons:
   apt:
-    packages:
+    sources:
     - sqlite3
+    - sourceline: 'ppa:jonathonf/backports'
 matrix:
   include:
   - python: 2.7
@@ -38,4 +39,5 @@ env:
 install:
 - make install-test
 script:
+- sqlite3 --version
 - tox
