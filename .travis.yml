@@ -1,5 +1,9 @@
 language: python
 sudo: false
+addons:
+  apt:
+    packages:
+    - sqlite3
 matrix:
   include:
   - python: 2.7
