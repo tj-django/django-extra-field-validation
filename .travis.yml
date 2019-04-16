@@ -25,7 +25,7 @@ matrix:
     env: TOXENV=ALL
     dist: trusty
   - name: "PyPy3 on Trusty Linux"
-  - python: pypy3
+    python: pypy3
     env: TOXENV=ALL
     dist: trusty
 notifications:
