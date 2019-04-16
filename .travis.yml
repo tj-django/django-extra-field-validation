@@ -24,10 +24,10 @@ matrix:
     python: pypy
     env: TOXENV=ALL
     dist: trusty
-  - name: "PyPy3 on Trusty Linux"
+  - name: "PyPy3 on Xenial Linux"
     python: pypy3
     env: TOXENV=ALL
-    dist: trusty
+    dist: xenial
 notifications:
   email:
     recipients:
