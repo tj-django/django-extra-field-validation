@@ -14,3 +14,4 @@ wheelhouse/
 *.sqlite3
 .DS_*
 pip-wheel-metadata/
+.envrc
