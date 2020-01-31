@@ -246,3 +246,7 @@ django-dynamic-model-validation is distributed under the terms of both
 - `Apache License, Version 2.0 <https://choosealicense.com/licenses/apache-2.0>`_
 
 at your option.
+
+
+TODO's
+- Move to support class and function based validators that use the instance object this should enable cross field model validation.
