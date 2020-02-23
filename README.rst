@@ -45,6 +45,7 @@ Python 2.7/3.5+ and PyPy.
 Usage
 -----
 This provides model level validation which includes:
+
 - conditional validation
 - cross field validation
 - required field validation
