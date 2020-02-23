@@ -45,10 +45,10 @@ Python 2.7/3.5+ and PyPy.
 Usage
 -----
 This provides model level validation which includes
-* conditional validation
-* cross field validation
-* required field validation
-* optional field validation
+- conditional validation
+- cross field validation
+- required field validation
+- optional field validation
 
 
 [Validates] That only one of the listed fields is provided.
