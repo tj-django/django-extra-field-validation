@@ -3,7 +3,7 @@ import io
 
 from setuptools import find_packages, setup
 
-install_requires = ['future==0.17.1']
+install_requires = ['future==0.17.1', 'six==1.14.0']
 
 test_requires = [
     'tox==3.1.2',
@@ -26,7 +26,7 @@ lint_requires = [
 
 local_dev_requires = [
     'Django>=1.11.18',
-    'pip-tools==3.1.0',
+    'pip-tools==4.5.0',
     'check-manifest==0.37',
 ]
 
