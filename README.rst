@@ -1,5 +1,5 @@
-Dynamic model validation.
-=========================
+django-dynamic-model-validation
+===============================
 
 .. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
     :target: https://badge.fury.io/py/django-dynamic-model-validation
