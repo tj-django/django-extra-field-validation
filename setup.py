@@ -9,7 +9,7 @@ test_requires = [
     'tox==3.1.2',
     'pytest-django==3.4.4',
     'pluggy>=0.7',
-    'mock==2.0.0',
+    'mock==4.0.2',
     'codacy-coverage==1.3.10',
 ]
 
