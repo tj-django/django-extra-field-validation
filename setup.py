@@ -7,7 +7,7 @@ install_requires = ['future==0.17.1', 'six==1.14.0']
 
 test_requires = [
     'tox==3.1.2',
-    'pytest-django==3.4.4',
+    'pytest-django==3.9.0',
     'pluggy>=0.7',
     'mock==2.0.0',
     'codacy-coverage==1.3.10',
