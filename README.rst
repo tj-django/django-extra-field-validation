@@ -35,12 +35,6 @@ Python 2.7/3.5+ and PyPy.
 
     $ pip install django-dynamic-model-validation
 
-.. code-block:: python
-
-   INSTALLED_APPS = [
-       ...
-       'dynamic_validator',
-   ]
 
 Usage
 -----
