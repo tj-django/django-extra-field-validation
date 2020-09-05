@@ -15,7 +15,7 @@ test_requires = [
 
 deploy_requires = [
     'readme_renderer[md]',
-    'bumpversion==0.5.3',
+    'bumpversion==0.6.0',
 ]
 
 lint_requires = [
