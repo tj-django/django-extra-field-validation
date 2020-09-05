@@ -10,7 +10,7 @@ test_requires = [
     'pytest-django==3.4.4',
     'pluggy>=0.7',
     'mock==4.0.2',
-    'codacy-coverage==1.3.10',
+    'codacy-coverage==1.3.11',
 ]
 
 deploy_requires = [
