@@ -46,8 +46,8 @@ This provides model level validation which includes:
 - optional field validation
 
 
-Require one field in collection
-*******************************
+Require one field in a collection
+*********************************
 
 .. code-block:: python
 
@@ -61,7 +61,7 @@ Require one field in collection
         percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
         REQUIRED_TOGGLE_FIELDS = [
-            ['amount', 'fixed_price', 'percentage'],
+            ['amount', 'fixed_price', 'percentage'],  # Require only one of the following fields.
         ]
 
 .. code-block:: bash
@@ -116,7 +116,7 @@ Optionally required fields
         percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
         OPTIONAL_TOGGLE_FIELDS = [
-            ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided.
+            ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided when present.
         ]
 
 .. code-block:: bash
