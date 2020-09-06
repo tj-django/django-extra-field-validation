@@ -34,7 +34,7 @@ env:
   global:
     secure: aC81+utUs6eYqQ0dJ6jfhREFQ67I5iHUk/oCl9HndU2FHcmXUSQU+4AqGlabAnysvxJNUn0C01sTlJisEgmkY5/Fzav6zP2ScCg2gU20YGNJ03URkehjTmn+ZBe79EJQTH8npuiKwZEPKhS1gas/7/schLVtwsJCZ5GQySE9x85OmpLqmGW3wTMbQsLDVYyNXuRwKlrEXLvynho/WiB6T5N9rtilmm2X7Ma5N75WO4ptcSbUzaRtMWuPPCjdorEkus13Guusi/HoRoP0RG2FSWo9r9VPNPYqoVGQQaYk/0xQTi4yJ8GHw7K/KgW8yjXGTzZnuM5bp4HpmwV9hFPf8kYD580EI8z7+4JWqd8oIOsehamkEzN6+6BSjbTSf4hGC8f8H5cWkKPI9d+Tg7XL/la8FUKOUui17UIVpGoh4O++UKqqrcwJ3KXgorge8Ux0bvEAO20DpCyOuzr8PbK3rtVXKtkr9fUB7xUs44A975bWBwkj6sVWMxNI6JkDC0vo//DG9DauY9nRRRChq75myZ5Xr5R89E/l43ASaVDzOAlH5AgMTw5eegr3YxJAAXjXjk40Lvho4nn6O2eQDQAKSEbVZxYkNx73xMkgaFDtDMeJ0PmhZX5DmR00lcAOpXbSq3fV8qOpRgDKWzQ06bWgUadZB/vomI7GCDba+u+rMn0=
 install:
-- make install-test
+- pip install -U pip tox
 script:
 - sqlite3 --version
 - tox
