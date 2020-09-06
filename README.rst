@@ -1,6 +1,10 @@
 django-dynamic-model-validation
 ===============================
 
+.. image:: https://api.codacy.com/project/badge/Grade/1dd94022a19e4a43abd6b79c50f1cf5c
+   :alt: Codacy Badge
+   :target: https://app.codacy.com/gh/tj-django/django-dynamic-model-validation?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Grade_Dashboard
+
 .. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
     :target: https://badge.fury.io/py/django-dynamic-model-validation
 .. image:: https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master
