@@ -22,7 +22,7 @@ matrix:
     sudo: true
   - python: pypy2.7-6.0
     env: TOXENV=py35
-  - python: pypy3.5-6.0
+  - python: pypy3.6-7.3.1
     env: TOXENV=ALL
 notifications:
   email:
