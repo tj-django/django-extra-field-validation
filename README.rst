@@ -3,12 +3,12 @@ django-dynamic-model-validation
 
 .. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
     :target: https://badge.fury.io/py/django-dynamic-model-validation
-.. image:: https://travis-ci.org/jackton1/django-dynamic-model-validation.svg?branch=master
-    :target: https://travis-ci.org/jackton1/django-dynamic-model-validation
+.. image:: https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master
+    :target: https://travis-ci.org/tj-django/django-dynamic-model-validation
 .. image:: https://api.codacy.com/project/badge/Coverage/33797e94524e4277b476c051618ad495
-    :target: https://www.codacy.com/app/jackton1/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackton1/django-dynamic-model-validation&amp;utm_campaign=Badge_Coverage
+    :target: https://www.codacy.com/app/tj-django/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Coverage
 .. image:: https://api.codacy.com/project/badge/Grade/33797e94524e4277b476c051618ad495
-    :target: https://www.codacy.com/app/jackton1/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jackton1/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade
+    :target: https://www.codacy.com/app/tj-django/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade
 
 
 
@@ -46,8 +46,8 @@ This provides model level validation which includes:
 - optional field validation
 
 
-Require one field in collection
-*******************************
+Require one field in a collection
+*********************************
 
 .. code-block:: python
 
@@ -61,7 +61,7 @@ Require one field in collection
         percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
         REQUIRED_TOGGLE_FIELDS = [
-            ['amount', 'fixed_price', 'percentage'],
+            ['amount', 'fixed_price', 'percentage'],  # Require only one of the following fields.
         ]
 
 .. code-block:: bash
@@ -116,7 +116,7 @@ Optionally required fields
         percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
         OPTIONAL_TOGGLE_FIELDS = [
-            ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided.
+            ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided when present.
         ]
 
 .. code-block:: bash
