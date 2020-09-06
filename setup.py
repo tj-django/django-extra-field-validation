@@ -6,16 +6,16 @@ from setuptools import find_packages, setup
 install_requires = ['future==0.17.1', 'six==1.15.0']
 
 test_requires = [
-    'tox==3.20.0',
-    'pytest-django==3.4.4',
+    'tox',
+    'pytest-django',
     'pluggy>=0.7',
     'mock',
-    'codacy-coverage==1.3.10',
+    'codacy-coverage',
 ]
 
 deploy_requires = [
     'readme_renderer[md]',
-    'bumpversion==0.5.3',
+    'bumpversion>=0.5.3',
 ]
 
 lint_requires = [
@@ -90,6 +90,9 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
     ],
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
