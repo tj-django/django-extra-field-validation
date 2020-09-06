@@ -1,5 +1,5 @@
-Dynamic model validation.
-=========================
+django-dynamic-model-validation
+===============================
 
 .. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
     :target: https://badge.fury.io/py/django-dynamic-model-validation
@@ -35,12 +35,6 @@ Python 2.7/3.5+ and PyPy.
 
     $ pip install django-dynamic-model-validation
 
-.. code-block:: python
-
-   INSTALLED_APPS = [
-       ...
-       'dynamic_validator',
-   ]
 
 Usage
 -----
@@ -52,8 +46,8 @@ This provides model level validation which includes:
 - optional field validation
 
 
-[Validates] That only one of the listed fields is provided.
-***********************************************************
+Require one field in collection
+*******************************
 
 .. code-block:: python
 
@@ -80,8 +74,8 @@ This provides model level validation which includes:
     ...
     ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
 
-[Validates] That a field without a default is required.
-*******************************************************
+Required fields
+***************
 
 .. code-block:: python
 
@@ -107,8 +101,8 @@ This provides model level validation which includes:
     ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 
-[Validates] That optional fields should only have one value if provided.
-************************************************************************
+Optionally required fields
+**************************
 
 .. code-block:: python
 
@@ -137,9 +131,8 @@ This provides model level validation which includes:
     ...
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
-
-[Validates] That when a user is active (ie. instance.user.is_active) both fields should be provided.
-****************************************************************************************************
+Pre-condtion required fields
+****************************
 
 .. code-block:: python
 
@@ -173,8 +166,8 @@ This provides model level validation which includes:
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
-[Validates] That when a user is active (ie. instance.user.is_active) any of the fields should be provided.
-**********************************************************************************************************
+Pre-condtion optional required fields
+*************************************
 
 .. code-block:: python
 

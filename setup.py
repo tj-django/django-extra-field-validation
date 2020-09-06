@@ -3,25 +3,25 @@ import io
 
 from setuptools import find_packages, setup
 
-install_requires = ['future==0.17.1', 'six==1.14.0']
+install_requires = ['future==0.17.1', 'six==1.15.0']
 
 test_requires = [
-    'tox==3.1.2',
-    'pytest-django==3.4.4',
+    'tox',
+    'pytest-django',
     'pluggy>=0.7',
-    'mock==2.0.0',
-    'codacy-coverage==1.3.10',
+    'mock',
+    'codacy-coverage',
 ]
 
 deploy_requires = [
     'readme_renderer[md]',
-    'bumpversion==0.5.3',
+    'bumpversion>=0.5.3',
 ]
 
 lint_requires = [
     'flake8==3.4.1',
-    'yamllint==1.10.0',
-    'isort==4.2.15',
+    'yamllint==1.24.2',
+    'isort==4.3.21',
 ]
 
 local_dev_requires = [
@@ -90,6 +90,9 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
     ],
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
