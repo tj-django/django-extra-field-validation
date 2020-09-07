@@ -1,4 +1,7 @@
 # added by check_manifest.py
+prune test*.py
+prune dynamic_validator/tests.py
+recursive-include dynamic_validator *.py
 include *.py
 exclude *.toml
 include *.txt
@@ -8,11 +11,10 @@ exclude .coveragerc
 exclude Makefile
 exclude pytest.ini
 exclude tox.ini
-recursive-exclude demo *.py
+prune demo
+exclude manage.py
 exclude dynamic_validator/tests.py
 recursive-exclude django_dynamic_model_validation *.py
 include LICENSE-APACHE
 include LICENSE-MIT
 include README.rst
-recursive-include dynamic_validator *.py *.html *.css *.js
-recursive-exclude dynamic_validator tests.py

@@ -3,30 +3,30 @@ import io
 
 from setuptools import find_packages, setup
 
-install_requires = ['future==0.17.1']
+install_requires = ['future==0.17.1', 'six==1.15.0']
 
 test_requires = [
-    'tox==3.1.2',
-    'pytest-django==3.4.4',
+    'tox',
+    'pytest-django',
     'pluggy>=0.7',
-    'mock==2.0.0',
-    'codacy-coverage==1.3.10',
+    'mock',
+    'codacy-coverage',
 ]
 
 deploy_requires = [
     'readme_renderer[md]',
-    'bumpversion==0.5.3',
+    'bumpversion>=0.5.3',
 ]
 
 lint_requires = [
     'flake8==3.4.1',
-    'yamllint==1.10.0',
-    'isort==4.2.15',
+    'yamllint==1.24.2',
+    'isort==4.3.21',
 ]
 
 local_dev_requires = [
     'Django>=1.11.18',
-    'pip-tools==3.1.0',
+    'pip-tools',
     'check-manifest==0.37',
 ]
 
@@ -52,7 +52,7 @@ if os.path.isfile(README_PATH):
 else:
     LONG_DESCRIPTION = ''
 
-VERSION = (0, 1, 10)
+VERSION = (0, 1, 13)
 
 version = '.'.join(map(str, VERSION))
 
@@ -62,6 +62,7 @@ setup(
     description='Extra django model validation.',
     python_requires='>=2.6',
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/x-rst',
     author='Tonye Jack',
     author_email='jtonye@ymail.com',
     maintainer='Tonye Jack',
@@ -89,9 +90,12 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
     ],
     install_requires=install_requires,
     tests_require=['coverage', 'pytest'],
     extras_require=extras_require,
-    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests', 'demo']),
+    packages=find_packages(exclude=['*.tests', '*.tests.*', 'tests.*', 'tests*', 'demo', 'manage.*']),
 )
