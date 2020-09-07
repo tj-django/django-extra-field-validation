@@ -15,7 +15,7 @@ matrix:
     env: TOXENV=py36
   - python: 3.6-dev
     env: TOXENV=py36
-  - name: "Python 3.7 on Xenial Linux"
+  - name: Python 3.7 on Xenial Linux
     python: 3.7
     env: TOXENV=py37
     dist: xenial
@@ -32,7 +32,7 @@ env:
   matrix:
   - DJANGO_SETTINGS_MODULE=django_dynamic_model_validation.settings
   global:
-    secure: aC81+utUs6eYqQ0dJ6jfhREFQ67I5iHUk/oCl9HndU2FHcmXUSQU+4AqGlabAnysvxJNUn0C01sTlJisEgmkY5/Fzav6zP2ScCg2gU20YGNJ03URkehjTmn+ZBe79EJQTH8npuiKwZEPKhS1gas/7/schLVtwsJCZ5GQySE9x85OmpLqmGW3wTMbQsLDVYyNXuRwKlrEXLvynho/WiB6T5N9rtilmm2X7Ma5N75WO4ptcSbUzaRtMWuPPCjdorEkus13Guusi/HoRoP0RG2FSWo9r9VPNPYqoVGQQaYk/0xQTi4yJ8GHw7K/KgW8yjXGTzZnuM5bp4HpmwV9hFPf8kYD580EI8z7+4JWqd8oIOsehamkEzN6+6BSjbTSf4hGC8f8H5cWkKPI9d+Tg7XL/la8FUKOUui17UIVpGoh4O++UKqqrcwJ3KXgorge8Ux0bvEAO20DpCyOuzr8PbK3rtVXKtkr9fUB7xUs44A975bWBwkj6sVWMxNI6JkDC0vo//DG9DauY9nRRRChq75myZ5Xr5R89E/l43ASaVDzOAlH5AgMTw5eegr3YxJAAXjXjk40Lvho4nn6O2eQDQAKSEbVZxYkNx73xMkgaFDtDMeJ0PmhZX5DmR00lcAOpXbSq3fV8qOpRgDKWzQ06bWgUadZB/vomI7GCDba+u+rMn0=
+  - secure: lUKOMTqDQSvRriSOSXOuUAqCT6Gw13UVeaP//Tfp9gqnAcIb4OW9TlJv6/bELGMAGGbXeYEjIPJOXUrsqxUaIRpjua99t3iJj6evTazs8GBDd9DSmPb/UOd2wshsRg/kqVanJ6v2zRl+kmCLerniRjvJunjQAC9HGYE11iJdvq7YPvoXjjEN15ZbrLndk7b1ghyBHLatgqVGRrCBw6+I3HJaIzCcXHHF/UOVOrUQ+KkfGrmxFKFR6UeM/mw/MWvKIbLI0rrpMv9LcyfX+odclu4tnEWfvc819dxaUuL5wSbsMAlOA/xnY6nPvxw6cqTV0teKnPj4HrFjHuJa2cvNn1JB4zUSBeP+EdiyAV+ItKCVpWP8i4h79aYcYH0JyA4Npnlug9/HKG21QJnS06DAU/rJOmBtbeTiDj1RqPUwP8boKhD0mQ67uUuIHlkBlkQE/DGrwxSVnCnSGAmZ4l/hp6t0Hbh5k1Sq+aFvJwTcnVLIsoGptmlHvgxuudLSN/CUWlIMLTN1KLxdv0RpxSJiZHOYw+nJFn0xNIMWDxcTxy58RznDmr3LLV1wK4hN1yyqdyN533Su/xVvz9OAWwszWvY1oI82yRKpNqLFyyFiA2LbRT8mHxOVauSeWAjpP/fmMLlACiYFv+4PO2AcX/9ujypAGpCPgf0sd55jkpDybgI=
 install:
 - pip install -U pip tox
 script:
