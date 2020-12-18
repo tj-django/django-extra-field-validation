@@ -20,7 +20,7 @@ django-dynamic-model-validation
 
 Introduction
 ------------
-This package aims to provide tools needed to define custom field validation logic once which can be used independently or with
+This package aims to provide tools needed to define custom field validation logic which can be used independently or with
 django forms, test cases, API implementation or any model operation that requires saving data to the database.
 
 This can also be extended by defining table check constraints if needed but currently validation
