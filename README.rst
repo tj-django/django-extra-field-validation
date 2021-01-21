@@ -133,7 +133,7 @@ Optionally required fields
     ...
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
-Pre-condtion required fields
+Conditional required fields
 ****************************
 
 .. code-block:: python
@@ -168,8 +168,8 @@ Pre-condtion required fields
     ...
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
-Pre-condtion optional required fields
-*************************************
+Condtion optional required fields
+*********************************
 
 .. code-block:: python
 
