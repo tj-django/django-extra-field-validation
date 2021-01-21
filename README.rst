@@ -13,6 +13,9 @@ django-dynamic-model-validation
 
 .. image:: https://api.codacy.com/project/badge/Coverage/33797e94524e4277b476c051618ad495
     :target: https://www.codacy.com/app/tj-django/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Coverage
+    
+.. image:: https://img.shields.io/pypi/dm/django-dynamic-model-validation
+    :alt: PyPi downloads
 
 .. contents:: **Table of Contents**
     :backlinks: none
