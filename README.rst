@@ -5,9 +5,6 @@ django-dynamic-model-validation
    :alt: Codacy Badge
    :target: https://app.codacy.com/gh/tj-django/django-dynamic-model-validation?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Grade_Dashboard
 
-.. image:: https://img.shields.io/pypi/dm/django-dynamic-model-validation   
-   :alt: PyPI - Downloads
-
 .. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
     :target: https://badge.fury.io/py/django-dynamic-model-validation
 
