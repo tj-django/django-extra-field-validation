@@ -11,9 +11,15 @@ django-dynamic-model-validation
 .. image:: https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master
     :target: https://travis-ci.org/tj-django/django-dynamic-model-validation
 
+.. image:: https://img.shields.io/pypi/pyversions/django-dynamic-model-validation
+    :alt: PyPI - Python Version
+
+.. image:: https://img.shields.io/pypi/djversions/django-dynamic-model-validation
+    :alt: PyPI - Django Version
+
 .. image:: https://api.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5
     :target: https://www.codacy.com/gh/tj-django/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Coverage
-    
+
 .. image:: https://img.shields.io/pypi/dm/django-dynamic-model-validation
     :alt: PyPi downloads
 
