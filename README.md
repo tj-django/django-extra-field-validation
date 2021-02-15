@@ -1,30 +1,11 @@
 django-dynamic-model-validation
 ===============================
 
-.. image:: https://api.codacy.com/project/badge/Grade/1dd94022a19e4a43abd6b79c50f1cf5c
-   :alt: Codacy Badge
-   :target: https://app.codacy.com/gh/tj-django/django-dynamic-model-validation?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Grade_Dashboard
+[![Build Status](https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master)](https://travis-ci.org/tj-django/django-dynamic-model-validation) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Coverage) 
 
-.. image:: https://badge.fury.io/py/django-dynamic-model-validation.svg
-    :target: https://badge.fury.io/py/django-dynamic-model-validation
 
-.. image:: https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master
-    :target: https://travis-ci.org/tj-django/django-dynamic-model-validation
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-dynamic-model-validation) ![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-dynamic-model-validation) ![PyPI - Downloads](https://img.shields.io/pypi/dm/django-dynamic-model-validation)
 
-.. image:: https://img.shields.io/pypi/pyversions/django-dynamic-model-validation
-    :alt: PyPI - Python Version
-
-.. image:: https://img.shields.io/pypi/djversions/django-dynamic-model-validation
-    :alt: PyPI - Django Version
-
-.. image:: https://api.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5
-    :target: https://www.codacy.com/gh/tj-django/django-dynamic-model-validation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Coverage
-
-.. image:: https://img.shields.io/pypi/dm/django-dynamic-model-validation
-    :alt: PyPi downloads
-
-.. contents:: **Table of Contents**
-    :backlinks: none
 
 Introduction
 ------------
@@ -38,82 +19,88 @@ will only be handled at the model level.
 Installation
 ------------
 
-django-dynamic-model-validation is distributed on `PyPI <https://pypi.org>`_ as a universal
+django-dynamic-model-validation is distributed on [PyPI](https://pypi.org) as a universal
 wheel and is available on Linux/macOS and Windows and supports
 Python 2.7/3.5+ and PyPy.
 
-.. code-block:: bash
-
-    $ pip install django-dynamic-model-validation
-
+```bash
+$ pip install django-dynamic-model-validation
+```
 
 Usage
 -----
 This provides model level validation which includes:
 
-- conditional validation
-- cross field validation
-- required field validation
-- optional field validation
+- Conditional field validation
+- Cross field validation
+- Required field validation
+- Optional field validation
 
 
 Require one field in a collection
-*********************************
+=================================
 
-.. code-block:: python
+```py
 
-    from django.db import models
-    from dynamic_validator import ModelFieldRequiredMixin
+from django.db import models
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-    class TestModel(ModelFieldRequiredMixin, models.Model):
-        amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-        fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-        percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+class TestModel(ModelFieldRequiredMixin, models.Model):
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
-        REQUIRED_TOGGLE_FIELDS = [
-            ['amount', 'fixed_price', 'percentage'],  # Require only one of the following fields.
-        ]
+    REQUIRED_TOGGLE_FIELDS = [
+        ['amount', 'fixed_price', 'percentage'],  # Require only one of the following fields.
+    ]
 
-.. code-block:: bash
+```
 
-    $ python manage.py shell
-    ...
-    >>> from decimal import Decimal
-    >>> from demo.models import TestModel
-    >>> TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
-    ...
-    ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
+----
+
+```sh
+$ python manage.py shell
+...
+>>> from decimal import Decimal
+>>> from demo.models import TestModel
+>>> TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
+...
+ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
+```
 
 Required fields
-***************
+===============
 
-.. code-block:: python
+```py
 
-    from django.db import models
-    from dynamic_validator import ModelFieldRequiredMixin
+from django.db import models
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-    class TestModel(ModelFieldRequiredMixin, models.Model):
-        amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-        fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-        percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+class TestModel(ModelFieldRequiredMixin, models.Model):
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
-        REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
+    REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
+```
 
-.. code-block:: bash
+----
 
-    $ python manage.py shell
-    ...
-    >>> from decimal import Decimal
-    >>> from demo.models import TestModel
-    >>> TestModel.objects.create(fixed_price=Decimal('3.00'))
-    ...
-    ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
+```sh
+$ python manage.py shell
+...
+>>> from decimal import Decimal
+>>> from demo.models import TestModel
+>>> TestModel.objects.create(fixed_price=Decimal('3.00'))
+...
+ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
+```
 
 
 Optionally required fields
-**************************
+==========================
 
 .. code-block:: python
 
@@ -143,7 +130,7 @@ Optionally required fields
     ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
 Conditional required fields
-****************************
+===========================
 
 .. code-block:: python
 
@@ -178,7 +165,7 @@ Conditional required fields
     ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
 Condtion optional required fields
-*********************************
+=================================
 
 .. code-block:: python
 
@@ -254,8 +241,8 @@ License
 
 django-dynamic-model-validation is distributed under the terms of both
 
-- `MIT License <https://choosealicense.com/licenses/mit>`_
-- `Apache License, Version 2.0 <https://choosealicense.com/licenses/apache-2.0>`_
+- [MIT License](https://choosealicense.com/licenses/mit)
+- [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
 
 at your option.
 
