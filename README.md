@@ -37,8 +37,7 @@ This provides model level validation which includes:
 - Optional field validation
 
 
-Require one field in a collection
-=================================
+### Require one field in a collection
 
 ```py
 
@@ -57,9 +56,8 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-----
-
 ```sh
+
 $ python manage.py shell
 ...
 >>> from decimal import Decimal
@@ -67,10 +65,10 @@ $ python manage.py shell
 >>> TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
 ...
 ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
+
 ```
 
-Required fields
-===============
+### Required fields
 
 ```py
 
@@ -86,9 +84,8 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
 ```
 
-----
-
 ```sh
+
 $ python manage.py shell
 ...
 >>> from decimal import Decimal
@@ -96,121 +93,129 @@ $ python manage.py shell
 >>> TestModel.objects.create(fixed_price=Decimal('3.00'))
 ...
 ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
+
 ```
 
 
-Optionally required fields
-==========================
+### Optionally required fields
 
-.. code-block:: python
+```py
 
-    from django.db import models
-    from dynamic_validator import ModelFieldRequiredMixin
-
-
-    class TestModel(ModelFieldRequiredMixin, models.Model):
-        amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-        fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-        percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
-
-        OPTIONAL_TOGGLE_FIELDS = [
-            ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided when present.
-        ]
-
-.. code-block:: bash
-
-    $ python manage.py shell
-    ...
-    >>> from decimal import Decimal
-    >>> from demo.models import TestModel
-    >>> first_obj = TestModel.objects.create(amount=Decimal('2.0'))
-    >>> second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
-    >>> third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
-    ...
-    ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
-
-Conditional required fields
-===========================
-
-.. code-block:: python
-
-    from django.db import models
-    from django.conf import settings
-    from dynamic_validator import ModelFieldRequiredMixin
+from django.db import models
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-    class TestModel(ModelFieldRequiredMixin, models.Model):
-        user = models.ForeignKey(settings.AUTH_USER_MODEL)
+class TestModel(ModelFieldRequiredMixin, models.Model):
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
-        amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-        fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-        percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+    OPTIONAL_TOGGLE_FIELDS = [
+        ['fixed_price', 'percentage']  # Optionally validates that only fixed price/percentage are provided when present.
+    ]
 
-        CONDITIONAL_REQUIRED_FIELDS = [
-            (
-                lambda instance: instance.user.is_active, ['amount', 'percentage'],
-            ),
-        ]
+```
 
-.. code-block:: bash
+```sh
 
-    $ python manage.py shell
-    ...
-    >>> from decimal import Decimal
-    >>> from django.contrib.auth import get_user_model
-    >>> from demo.models import TestModel
-    >>> user = get_user_model().objects.create(username='test', is_active=True)
-    >>> first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
-    ...
-    ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
+$ python manage.py shell
+...
+>>> from decimal import Decimal
+>>> from demo.models import TestModel
+>>> first_obj = TestModel.objects.create(amount=Decimal('2.0'))
+>>> second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
+>>> third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
+...
+ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
-Condtion optional required fields
-=================================
+```
 
-.. code-block:: python
+### Conditional required fields
 
-    from django.db import models
-    from django.conf import settings
-    from dynamic_validator import ModelFieldRequiredMixin
+```py
+
+from django.db import models
+from django.conf import settings
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-    class TestModel(ModelFieldRequiredMixin, models.Model):
-        user = models.ForeignKey(settings.AUTH_USER_MODEL)
+class TestModel(ModelFieldRequiredMixin, models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-        amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-        fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-        percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
 
-        CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
-            (
-                lambda instance: instance.user.is_active, ['fixed_price', 'percentage', 'amount'],
-            ),
-        ]
+    CONDITIONAL_REQUIRED_FIELDS = [
+        (
+            lambda instance: instance.user.is_active, ['amount', 'percentage'],
+        ),
+    ]
 
-.. code-block:: bash
+```
 
-    $ python manage.py shell
-    ...
-    >>> from decimal import Decimal
-    >>> from django.contrib.auth import get_user_model
-    >>> from demo.models import TestModel
-    >>> user = get_user_model().objects.create(username='test', is_active=True)
-    >>> first_obj = TestModel.objects.create(user=user)
-    ...
-    ValueError: {'__all__': ValidationError([u'Please provide a valid value for any of the following fields: Fixed price, Percentage, Amount'])}
-    ...
-    >>>first_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
-    ...
-    ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
-    ...
+```sh
 
+$ python manage.py shell
+...
+>>> from decimal import Decimal
+>>> from django.contrib.auth import get_user_model
+>>> from demo.models import TestModel
+>>> user = get_user_model().objects.create(username='test', is_active=True)
+>>> first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
+...
+ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
+
+```
+
+### Condtion optional required fields
+
+```py
+
+from django.db import models
+from django.conf import settings
+from dynamic_validator import ModelFieldRequiredMixin
+
+
+class TestModel(ModelFieldRequiredMixin, models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+
+    CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
+        (
+            lambda instance: instance.user.is_active, ['fixed_price', 'percentage', 'amount'],
+        ),
+    ]
+```
+
+```sh
+
+$ python manage.py shell
+...
+>>> from decimal import Decimal
+>>> from django.contrib.auth import get_user_model
+>>> from demo.models import TestModel
+>>> user = get_user_model().objects.create(username='test', is_active=True)
+>>> first_obj = TestModel.objects.create(user=user)
+...
+ValueError: {'__all__': ValidationError([u'Please provide a valid value for any of the following fields: Fixed price, Percentage, Amount'])}
+...
+>>>first_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
+...
+ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
+...
+
+```
 
 Model Attributes
 ----------------
 
 This is done using model attributes below.
 
-.. code-block:: python
+```py
 
     #  Using a list/iterable: [['a', 'b'], ['c', 'd']] which validates that a field from each item is provided.
     REQUIRED_TOGGLE_FIELDS = []
@@ -234,7 +239,7 @@ This is done using model attributes below.
     # Validated at least one not both fields are provided if the condition is True.
     CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 
-
+```
 
 License
 -------
