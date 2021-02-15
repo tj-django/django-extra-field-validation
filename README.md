@@ -28,10 +28,10 @@ Usage
 -----
 This provides model level validation which includes:
 
--  Conditional field validation
--  Cross field validation
--  Required field validation
--  Optional field validation
+  - Conditional field validation
+  - Cross field validation
+  - Required field validation
+  - Optional field validation
 
 ### Require one field in a collection
 
@@ -241,12 +241,11 @@ License
 
 django-dynamic-model-validation is distributed under the terms of both
 
-- [MIT License](https://choosealicense.com/licenses/mit)
-- [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
+  - [MIT License](https://choosealicense.com/licenses/mit)
+  - [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
 
 at your option.
 
-
 TODO's
 ------
-- Move to support class and function based validators that use the instance object this should enable cross field model validation.
+  - Move to support class and function based validators that use the instance object this should enable cross field model validation.
