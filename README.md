@@ -3,9 +3,7 @@ django-dynamic-model-validation
 
 [![Build Status](https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master)](https://travis-ci.org/tj-django/django-dynamic-model-validation) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Coverage) 
 
-
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-dynamic-model-validation) ![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-dynamic-model-validation) ![PyPI - Downloads](https://img.shields.io/pypi/dm/django-dynamic-model-validation)
-
 
 Introduction
 ------------
@@ -15,7 +13,6 @@ django forms, test cases, API implementation or any model operation that require
 This can also be extended by defining table check constraints if needed but currently validation
 will only be handled at the model level.
 
-
 Installation
 ------------
 
@@ -24,7 +21,7 @@ wheel and is available on Linux/macOS and Windows and supports
 Python 2.7/3.5+ and PyPy.
 
 ```bash
-$ pip install django-dynamic-model-validation
+pip install django-dynamic-model-validation
 ```
 
 Usage
@@ -35,7 +32,6 @@ This provides model level validation which includes:
 - Cross field validation
 - Required field validation
 - Optional field validation
-
 
 ### Require one field in a collection
 
@@ -56,9 +52,9 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```sh
+```bash
 
-$ python manage.py shell
+python manage.py shell
 ...
 >>> from decimal import Decimal
 >>> from demo.models import TestModel
@@ -84,9 +80,9 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
 ```
 
-```sh
+```bash
 
-$ python manage.py shell
+python manage.py shell
 ...
 >>> from decimal import Decimal
 >>> from demo.models import TestModel
@@ -95,7 +91,6 @@ $ python manage.py shell
 ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 ```
-
 
 ### Optionally required fields
 
@@ -116,9 +111,9 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```sh
+```bash
 
-$ python manage.py shell
+python manage.py shell
 ...
 >>> from decimal import Decimal
 >>> from demo.models import TestModel
@@ -154,9 +149,9 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```sh
+```bash
 
-$ python manage.py shell
+python manage.py shell
 ...
 >>> from decimal import Decimal
 >>> from django.contrib.auth import get_user_model
@@ -191,9 +186,9 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     ]
 ```
 
-```sh
+```bash
 
-$ python manage.py shell
+python manage.py shell
 ...
 >>> from decimal import Decimal
 >>> from django.contrib.auth import get_user_model
