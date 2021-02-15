@@ -44,7 +44,7 @@ extras_require = {
 }
 
 BASE_DIR = os.path.dirname(__file__)
-README_PATH = os.path.join(BASE_DIR, 'README.rst')
+README_PATH = os.path.join(BASE_DIR, 'README.md')
 
 if os.path.isfile(README_PATH):
     with io.open(README_PATH, encoding='utf-8') as f:
@@ -62,7 +62,7 @@ setup(
     description='Extra django model validation.',
     python_requires='>=2.6',
     long_description=LONG_DESCRIPTION,
-    long_description_content_type='text/x-rst',
+    long_description_content_type='text/markdown',
     author='Tonye Jack',
     author_email='jtonye@ymail.com',
     maintainer='Tonye Jack',
