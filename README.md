@@ -28,10 +28,10 @@ Usage
 -----
 This provides model level validation which includes:
 
-- Conditional field validation
-- Cross field validation
-- Required field validation
-- Optional field validation
+-  Conditional field validation
+-  Cross field validation
+-  Required field validation
+-  Optional field validation
 
 ### Require one field in a collection
 
