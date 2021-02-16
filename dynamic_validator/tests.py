@@ -1,8 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-# Create your tests here.
-
 
 class ModelFieldValidationTestCase(TestCase):
 
@@ -23,7 +21,6 @@ class ModelFieldValidationTestCase(TestCase):
         with self.assertRaises(ValueError):
             TestModel.objects.create(user=self.user)
 
-
     def test_required_fields_raises_exception(self):
         from demo.models import TestModel
 
@@ -32,4 +29,11 @@ class ModelFieldValidationTestCase(TestCase):
         with self.assertRaises(ValueError):
             TestModel.objects.create(user=self.user)
 
+    def test_providing_a_required_field_saves_the_instance(self):
+        from demo.models import TestModel
 
+        TestModel.REQUIRED_FIELDS = ['percentage']
+
+        obj = TestModel.objects.create(user=self.user, percentage=25)
+
+        self.assertEqual(obj.percentage, 25)
