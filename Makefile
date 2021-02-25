@@ -75,3 +75,12 @@ clean-test-all: clean-build  ## Clean build and test assets.
 	@rm -rf .tox/
 	@rm -rf .pytest_cache/
 	@rm test.db
+
+# -----------------------------------------------------------
+# --------- Docs ---------------------------------------
+# -----------------------------------------------------------
+create-docs:
+	@npx docsify init ./docs
+
+serve-docs:
+	@npx docsify serve ./docs

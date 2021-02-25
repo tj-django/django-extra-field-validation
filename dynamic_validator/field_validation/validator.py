@@ -1,7 +1,12 @@
+import django
 from django.core import validators
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.db import models
-from django.utils.translation import ugettext as _
+
+if django.VERSION <= (3, 0):
+    from django.utils.translation import ugettext as _
+else:
+    from django.utils.translation import gettext as _
 
 
 class ModelFieldRequiredMixin(object):
