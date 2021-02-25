@@ -18,14 +18,46 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='TestModel',
+            name="TestModel",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.DecimalField(blank=True, decimal_places=2, max_digits=5, null=True)),
-                ('fixed_price', models.DecimalField(blank=True, decimal_places=2, max_digits=7, null=True)),
-                ('percentage', models.DecimalField(blank=True, decimal_places=0, max_digits=3, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "amount",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=5, null=True
+                    ),
+                ),
+                (
+                    "fixed_price",
+                    models.DecimalField(
+                        blank=True, decimal_places=2, max_digits=7, null=True
+                    ),
+                ),
+                (
+                    "percentage",
+                    models.DecimalField(
+                        blank=True, decimal_places=0, max_digits=3, null=True
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
-            bases=(dynamic_validator.field_validation.validator.ModelFieldRequiredMixin, models.Model),
+            bases=(
+                dynamic_validator.field_validation.validator.ModelFieldRequiredMixin,
+                models.Model,
+            ),
         ),
     ]
