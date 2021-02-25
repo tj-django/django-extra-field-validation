@@ -1,3 +1,3 @@
 from .field_validation import ModelFieldRequiredMixin
 
-__all__ = ['ModelFieldRequiredMixin']
+__all__ = ["ModelFieldRequiredMixin"]
