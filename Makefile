@@ -7,7 +7,6 @@ MANAGE_PY   := $(PYTHON) manage.py
 PYTHON_PIP  := /usr/bin/env pip
 PIP_COMPILE := /usr/bin/env pip-compile
 PART := patch
-PACKAGE_VERSION = $(shell $(PYTHON) setup.py --version)
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -50,7 +49,7 @@ update-requirements:  ## Updates the requirement.txt adding missing package depe
 	@$(PIP_COMPILE)
 
 tag-build:
-	@git tag v$(PACKAGE_VERSION)
+	@git tag v$(shell $(PYTHON) setup.py --version)
 
 release-to-pypi: clean-build increase-version tag-build  ## Release project to pypi
 	@$(PYTHON_PIP) install -U twine
