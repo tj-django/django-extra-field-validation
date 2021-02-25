@@ -15,3 +15,4 @@ wheelhouse/
 .DS_*
 pip-wheel-metadata/
 .envrc
+coverage.xml
