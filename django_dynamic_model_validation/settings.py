@@ -103,8 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "UTC"
 
 USE_I18N = True
@@ -118,3 +116,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = "/static/"
+
+SECURE_HSTS_SECONDS = 3600
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+SECURE_SSL_REDIRECT = os.getenv("SECURE_SSL_REDIRECT_ENABLED") != "False"
+
+SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE_ENABLED") != "False"
+
+CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE_ENABLED") != "False"
+
+SECURE_HSTS_PRELOAD = True
