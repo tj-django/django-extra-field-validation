@@ -56,6 +56,7 @@ release-to-pypi: clean-build increase-version tag-build  ## Release project to p
 	@$(PYTHON) setup.py sdist bdist_wheel
 	@twine check dist/*
 	@twine upload dist/*
+	@git push --tags
 
 # ----------------------------------------------------------
 # ---------- Upgrade project version (bumpversion)  --------
