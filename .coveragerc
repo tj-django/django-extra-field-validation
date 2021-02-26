@@ -1,8 +1,5 @@
 [run]
-source =
-    demo
-    django_dynamic_model_validation
-    dynamic_validator
+source = dynamic_validator
 omit =
     .tox
     demo/apps.py

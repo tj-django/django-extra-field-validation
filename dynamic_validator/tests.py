@@ -1,14 +1,16 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
+User = get_user_model()
+
 
 class ModelFieldValidationTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.super_user = get_user_model().objects.create(
+        cls.super_user = User.objects.create(
             username="super-test-user", is_superuser=True
         )
-        cls.user = get_user_model().objects.create(username="test-user")
+        cls.user = User.objects.create(username="test-user")
 
     def test_conditional_required_fields_raises_exception(self):
         from demo.models import TestModel
@@ -22,6 +24,18 @@ class ModelFieldValidationTestCase(TestCase):
 
         with self.assertRaises(ValueError):
             TestModel.objects.create(user=self.user)
+
+    def test_conditional_required_fields_is_valid(self):
+        from demo.models import TestModel
+
+        TestModel.CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
+            (
+                lambda instance: instance.user.is_active,
+                ["fixed_price", "percentage", "amount"],
+            ),
+        ]
+
+        TestModel.objects.create(user=self.user, percentage=25)
 
     def test_required_fields_raises_exception(self):
         from demo.models import TestModel
@@ -39,3 +53,36 @@ class ModelFieldValidationTestCase(TestCase):
         obj = TestModel.objects.create(user=self.user, percentage=25)
 
         self.assertEqual(obj.percentage, 25)
+
+    def test_optional_required_fields_is_valid(self):
+        from demo.models import TestModel
+
+        TestModel.REQUIRED_TOGGLE_FIELDS = ["fixed_price", "percentage", "amount"]
+
+        TestModel.objects.create(user=self.user, percentage=25)
+
+    def test_optional_required_fields_raised_exception_when_invalid(self):
+        from demo.models import TestModel
+
+        TestModel.REQUIRED_TOGGLE_FIELDS = ["fixed_price", "percentage", "amount"]
+
+        with self.assertRaises(ValueError):
+            TestModel.objects.create(user=self.user)
+            TestModel.objects.create(user=self.user, percentage=25, amount=25)
+            TestModel.objects.create(user=self.user, fixed_price=25, amount=25)
+
+    def test_optional_toggle_fields_is_valid(self):
+        from demo.models import TestModel
+
+        TestModel.OPTIONAL_TOGGLE_FIELDS = ["fixed_price", "percentage", "amount"]
+
+        TestModel.objects.create(user=self.user, percentage=25)
+
+    def test_optional_toggle_fields_raised_exception_when_invalid(self):
+        from demo.models import TestModel
+
+        TestModel.OPTIONAL_TOGGLE_FIELDS = ["fixed_price", "percentage", "amount"]
+
+        with self.assertRaises(ValueError):
+            TestModel.objects.create(user=self.user, percentage=25, amount=25)
+            TestModel.objects.create(user=self.user, fixed_price=25, amount=25)
