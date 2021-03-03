@@ -2,7 +2,7 @@
 
 __author__ = """Tonye Jack"""
 __email__ = "jtonye@ymail.com"
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 from .field_validation import ModelFieldRequiredMixin
 

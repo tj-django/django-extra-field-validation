@@ -55,7 +55,7 @@ else:
 
 setup(
     name="django-dynamic-model-validation",
-    version="0.2.1",
+    version="0.2.2",
     description="Extra django model validation.",
     python_requires=">=2.6",
     long_description=LONG_DESCRIPTION,
