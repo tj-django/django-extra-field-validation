@@ -12,7 +12,32 @@ class ModelFieldValidationTestCase(TestCase):
         )
         cls.user = User.objects.create(username="test-user")
 
-    def test_conditional_required_fields_raises_exception(self):
+    def test_conditional_required_field_raises_exception_when_missing(self):
+        from demo.models import TestModel
+
+        TestModel.CONDITIONAL_REQUIRED_FIELDS = [
+            (
+                lambda instance: instance.user.is_active,
+                ["percentage"],
+            ),
+        ]
+
+        with self.assertRaises(ValueError):
+            TestModel.objects.create(user=self.user)
+
+    def test_conditional_required_field_is_valid(self):
+        from demo.models import TestModel
+
+        TestModel.CONDITIONAL_REQUIRED_FIELDS = [
+            (
+                lambda instance: instance.user.is_active,
+                ["percentage"],
+            ),
+        ]
+
+        TestModel.objects.create(user=self.user, percentage=25)
+    
+    def test_conditional_required_toggle_field_raises_exception_when_missing(self):
         from demo.models import TestModel
 
         TestModel.CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
@@ -24,8 +49,21 @@ class ModelFieldValidationTestCase(TestCase):
 
         with self.assertRaises(ValueError):
             TestModel.objects.create(user=self.user)
+    
+    def test_conditional_required_toggle_field_raises_exception_when_multiple_provided(self):
+        from demo.models import TestModel
 
-    def test_conditional_required_fields_is_valid(self):
+        TestModel.CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
+            (
+                lambda instance: instance.user.is_active,
+                ["fixed_price", "percentage", "amount"],
+            ),
+        ]
+
+        with self.assertRaises(ValueError):
+            TestModel.objects.create(user=self.user, percentage=25, fixed_price=10)
+
+    def test_conditional_required_toggle_field_is_valid(self):
         from demo.models import TestModel
 
         TestModel.CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [
@@ -53,6 +91,14 @@ class ModelFieldValidationTestCase(TestCase):
         obj = TestModel.objects.create(user=self.user, percentage=25)
 
         self.assertEqual(obj.percentage, 25)
+    
+    def test_providing_more_than_one_required_field_raises_an_error(self):
+        from demo.models import TestModel
+
+        TestModel.REQUIRED_FIELDS = ["percentage", "fixed_price"]
+
+        with self.assertRaises(ValueError):
+            TestModel.objects.create(user=self.user, percentage=25, fixed_price=10)
 
     def test_optional_required_fields_is_valid(self):
         from demo.models import TestModel
