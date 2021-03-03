@@ -15,7 +15,7 @@ test_requires = [
 
 deploy_requires = [
     "readme_renderer[md]",
-    "bumpversion>=0.5.3",
+    "bump2version==0.5.11",
 ]
 
 lint_requires = [
@@ -52,13 +52,10 @@ if os.path.isfile(README_PATH):
 else:
     LONG_DESCRIPTION = ""
 
-VERSION = (0, 2, 0)
-
-version = ".".join(map(str, VERSION))
 
 setup(
     name="django-dynamic-model-validation",
-    version=version,
+    version="0.2.0",
     description="Extra django model validation.",
     python_requires=">=2.6",
     long_description=LONG_DESCRIPTION,
