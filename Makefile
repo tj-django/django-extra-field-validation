@@ -60,12 +60,12 @@ release-to-pypi: clean-build increase-version tag-build  ## Release project to p
 	@git push
 
 # ----------------------------------------------------------
-# ---------- Upgrade project version (bumpversion)  --------
+# ---------- Upgrade project version (bump2version)  --------
 # ----------------------------------------------------------
 increase-version: clean-build guard-PART  ## Bump the project version (using the $PART env: defaults to 'patch').
 	@echo "Increasing project '$(PART)' version..."
 	@$(PYTHON_PIP) install -q -e .'[deploy]'
-	@bumpversion --verbose $(PART)
+	@bump2version --verbose $(PART)
 
 # ----------------------------------------------------------
 # --------- Run project Test -------------------------------
