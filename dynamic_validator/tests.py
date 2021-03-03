@@ -50,7 +50,7 @@ class ModelFieldValidationTestCase(TestCase):
         with self.assertRaises(ValueError):
             TestModel.objects.create(user=self.user)
 
-    def test_conditional_required_toggle_field_raises_exception_when_multiple_provided(
+    def test_conditional_required_toggle_field_raises_exception_when_multiple_used(
         self,
     ):
         from demo.models import TestModel
