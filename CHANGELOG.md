@@ -1,5 +1,20 @@
 # Changelog
 
+## [v1.0.0](https://github.com/tj-django/django-dynamic-model-validation/tree/v1.0.0) (2021-03-03)
+
+[Full Changelog](https://github.com/tj-django/django-dynamic-model-validation/compare/v0.2.2...v1.0.0)
+
+## [v0.2.2](https://github.com/tj-django/django-dynamic-model-validation/tree/v0.2.2) (2021-03-03)
+
+[Full Changelog](https://github.com/tj-django/django-dynamic-model-validation/compare/v0.2.0...v0.2.2)
+
+**Merged pull requests:**
+
+- Updated docs [\#109](https://github.com/tj-django/django-dynamic-model-validation/pull/109) ([github-actions[bot]](https://github.com/apps/github-actions))
+- Update to use bump2version [\#108](https://github.com/tj-django/django-dynamic-model-validation/pull/108) ([jackton1](https://github.com/jackton1))
+- Increased test coverage and update tox config. [\#106](https://github.com/tj-django/django-dynamic-model-validation/pull/106) ([jackton1](https://github.com/jackton1))
+- Update CHANGELOG [\#105](https://github.com/tj-django/django-dynamic-model-validation/pull/105) ([jackton1](https://github.com/jackton1))
+
 ## [v0.2.0](https://github.com/tj-django/django-dynamic-model-validation/tree/v0.2.0) (2021-02-25)
 
 [Full Changelog](https://github.com/tj-django/django-dynamic-model-validation/compare/v0.1.13...v0.2.0)
