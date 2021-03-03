@@ -48,23 +48,21 @@ update-requirements:  ## Updates the requirement.txt adding missing package depe
 	@echo "Syncing the package requirements.txt..."
 	@$(PIP_COMPILE)
 
-tag-build:
-	@git tag v$(shell $(PYTHON) setup.py --version)
-
-release-to-pypi: clean-build increase-version tag-build  ## Release project to pypi
+release-to-pypi: clean-build increase-version  ## Release project to pypi
 	@$(PYTHON_PIP) install -U twine
 	@$(PYTHON) setup.py sdist bdist_wheel
 	@twine check dist/*
 	@twine upload dist/*
 	@git push --tags
+	@git push
 
 # ----------------------------------------------------------
-# ---------- Upgrade project version (bumpversion)  --------
+# ---------- Upgrade project version (bump2version)  --------
 # ----------------------------------------------------------
 increase-version: clean-build guard-PART  ## Bump the project version (using the $PART env: defaults to 'patch').
 	@echo "Increasing project '$(PART)' version..."
 	@$(PYTHON_PIP) install -q -e .'[deploy]'
-	@bumpversion --verbose $(PART)
+	@bump2version --verbose $(PART)
 
 # ----------------------------------------------------------
 # --------- Run project Test -------------------------------
