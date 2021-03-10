@@ -24,7 +24,7 @@ django-dynamic-model-validation is distributed on [PyPI](https://pypi.org) as a 
 wheel and is available on Linux/macOS and Windows and supports
 Python 2.7/3.5+ and PyPy.
 
-```bash
+```shell script
 pip install django-dynamic-model-validation
 ```
 
@@ -56,14 +56,18 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
-...
+
 ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
 
 ```
