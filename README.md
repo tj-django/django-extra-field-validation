@@ -239,7 +239,8 @@ OPTIONAL_TOGGLE_FIELDS = []
 
 # Validates that all fields are present if the condition is True
 CONDITIONAL_REQUIRED_FIELDS = []
-# Validated at least one not both fields are provided if the condition is True.
+
+# Validates at least one, not both fields is provided if the condition is True.
 CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 
 ```
