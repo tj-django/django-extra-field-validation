@@ -210,25 +210,6 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     ]
 ```
 
-```bash
-
-python manage.py shell
-...
->>> from decimal import Decimal
->>> from django.contrib.auth import get_user_model
->>> from demo.models import TestModel
->>> user = get_user_model().objects.create(username='test', is_active=True)
->>> first_obj = TestModel.objects.create(user=user)
-...
-ValueError: {'__all__': ValidationError([u'Please provide a valid value for any of the following fields: Fixed price, Percentage, Amount'])}
-...
->>> first_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
-...
-ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
-...
-
-```
-
 Example
 
 ```python
