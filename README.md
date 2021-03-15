@@ -33,7 +33,7 @@ Usage
 This provides model level validation which includes:
  
   - [Required field validation](#require-a-single-field-in-a-collection)
-  - [Optional field validation](optionally-required-fields)
+  - [Optional field validation](#optionally-required-fields)
   - [Conditional field validation](#conditional-required-fields)
 
 ### Require a single field in a collection
