@@ -87,14 +87,18 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: TestModel.objects.create(fixed_price=Decimal('3.00'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> TestModel.objects.create(fixed_price=Decimal('3.00'))
-...
+
 ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 ```
@@ -118,16 +122,22 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: first_obj = TestModel.objects.create(amount=Decimal('2.0'))
+
+In [4]: second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
+
+In [5]: third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> first_obj = TestModel.objects.create(amount=Decimal('2.0'))
->>> second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
->>> third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
-...
+
 ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
 ```
@@ -156,16 +166,23 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
 
 ```
 
-```bash
 
-python manage.py shell
+Example
+
+```python
+In [1]: from decimal import Decimal
+
+in [2]: from django.contrib.auth import get_user_model
+
+In [3]: from demo.models import TestModel
+
+In [4]: user = get_user_model().objects.create(username='test', is_active=True)
+
+In [5]: first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from django.contrib.auth import get_user_model
->>> from demo.models import TestModel
->>> user = get_user_model().objects.create(username='test', is_active=True)
->>> first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
-...
+
 ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
 ```
@@ -193,24 +210,32 @@ class TestModel(ModelFieldRequiredMixin, models.Model):
     ]
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+in [2]: from django.contrib.auth import get_user_model
+
+In [3]: from demo.models import TestModel
+
+In [4]: user = get_user_model().objects.create(username='test', is_active=True)
+
+In [5]: first_obj = TestModel.objects.create(user=user)
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from django.contrib.auth import get_user_model
->>> from demo.models import TestModel
->>> user = get_user_model().objects.create(username='test', is_active=True)
->>> first_obj = TestModel.objects.create(user=user)
-...
+
 ValueError: {'__all__': ValidationError([u'Please provide a valid value for any of the following fields: Fixed price, Percentage, Amount'])}
-...
->>>first_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
-...
-ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
+
+In [6]: second_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
 
+ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
 ```
+
 
 Model Attributes
 ----------------
