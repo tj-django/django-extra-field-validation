@@ -9,7 +9,7 @@ else:
     from django.utils.translation import gettext as _
 
 
-class ModelFieldRequiredMixin(object):
+class ModelFieldValidatorMixin(object):
     #  A list of iterable with a field required from each section.
     REQUIRED_TOGGLE_FIELDS = []
     #  # A single list of required fields
