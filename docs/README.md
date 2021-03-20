@@ -1,9 +1,11 @@
-django-extra-field-validation
+django-dynamic-model-validation
 ===============================
 
-![PyPI](https://img.shields.io/pypi/v/django-extra-field-validation) [![Build Status](https://travis-ci.org/tj-django/django-extra-field-validation.svg?branch=master)](https://travis-ci.org/tj-django/django-extra-field-validation) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-extra-field-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-extra-field-validation&utm_campaign=Badge_Coverage) 
+![PyPI](https://img.shields.io/pypi/v/django-dynamic-model-validation) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-dynamic-model-validation) ![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-dynamic-model-validation) [![Downloads](https://pepy.tech/badge/django-clone)](https://pepy.tech/project/django-clone)
 
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-extra-field-validation) ![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-extra-field-validation) [![Downloads](https://pepy.tech/badge/django-clone)](https://pepy.tech/project/django-clone)
+[![Build Status](https://travis-ci.org/tj-django/django-dynamic-model-validation.svg?branch=master)](https://travis-ci.org/tj-django/django-dynamic-model-validation)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-dynamic-model-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-dynamic-model-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-dynamic-model-validation&utm_campaign=Badge_Coverage) 
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-dynamic-model-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-dynamic-model-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-dynamic-model-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-dynamic-model-validation/context:python)
 
 
 
@@ -18,32 +20,31 @@ will only be handled at the model level.
 Installation
 ------------
 
-django-extra-field-validation is distributed on [PyPI](https://pypi.org) as a universal
+django-dynamic-model-validation is distributed on [PyPI](https://pypi.org) as a universal
 wheel and is available on Linux/macOS and Windows and supports
 Python 2.7/3.5+ and PyPy.
 
-```bash
-pip install django-extra-field-validation
+```shell script
+pip install django-dynamic-model-validation
 ```
 
 Usage
 -----
 This provides model level validation which includes:
-
-  - Conditional field validation
-  - Cross field validation
-  - Required field validation
-  - Optional field validation
+ 
+  - [Required field validation](#require-a-single-field-in-a-collection)
+  - [Optional field validation](#optionally-required-fields)
+  - [Conditional field validation](#conditional-required-fields)
 
 ### Require a single field in a collection
 
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-class TestModel(FieldValidationMixin, models.Model):
+class TestModel(ModelFieldRequiredMixin, models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
@@ -54,14 +55,18 @@ class TestModel(FieldValidationMixin, models.Model):
 
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> TestModel.objects.create(amount=Decimal('2.50'), fixed_price=Decimal('3.00'))
-...
+
 ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amount, Fixed price, Percentage'])}
 
 ```
@@ -71,10 +76,10 @@ ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amoun
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-class TestModel(FieldValidationMixin, models.Model):
+class TestModel(ModelFieldRequiredMixin, models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
@@ -82,14 +87,18 @@ class TestModel(FieldValidationMixin, models.Model):
     REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: TestModel.objects.create(fixed_price=Decimal('3.00'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> TestModel.objects.create(fixed_price=Decimal('3.00'))
-...
+
 ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
 
 ```
@@ -99,10 +108,10 @@ ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-class TestModel(FieldValidationMixin, models.Model):
+class TestModel(ModelFieldRequiredMixin, models.Model):
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
@@ -113,16 +122,22 @@ class TestModel(FieldValidationMixin, models.Model):
 
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: first_obj = TestModel.objects.create(amount=Decimal('2.0'))
+
+In [4]: second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
+
+In [5]: third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from demo.models import TestModel
->>> first_obj = TestModel.objects.create(amount=Decimal('2.0'))
->>> second_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'))
->>> third_obj = TestModel.objects.create(amount=Decimal('2.0'), fixed_price=Decimal('3.00'), percentage=Decimal('10.0'))
-...
+
 ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed price, Percentage'])}
 
 ```
@@ -133,10 +148,10 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 from django.db import models
 from django.conf import settings
-from dynamic_validator import FieldValidationMixin
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-class TestModel(FieldValidationMixin, models.Model):
+class TestModel(ModelFieldRequiredMixin, models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
@@ -151,16 +166,23 @@ class TestModel(FieldValidationMixin, models.Model):
 
 ```
 
-```bash
 
-python manage.py shell
+Example
+
+```python
+In [1]: from decimal import Decimal
+
+in [2]: from django.contrib.auth import get_user_model
+
+In [3]: from demo.models import TestModel
+
+In [4]: user = get_user_model().objects.create(username='test', is_active=True)
+
+In [5]: first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from django.contrib.auth import get_user_model
->>> from demo.models import TestModel
->>> user = get_user_model().objects.create(username='test', is_active=True)
->>> first_obj = TestModel.objects.create(user=user, amount=Decimal('2.0'))
-...
+
 ValueError: {u'percentage': ValidationError([u'Please provide a value for: "percentage"'])}
 
 ```
@@ -171,10 +193,10 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 from django.db import models
 from django.conf import settings
-from dynamic_validator import FieldValidationMixin
+from dynamic_validator import ModelFieldRequiredMixin
 
 
-class TestModel(FieldValidationMixin, models.Model):
+class TestModel(ModelFieldRequiredMixin, models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
@@ -188,24 +210,32 @@ class TestModel(FieldValidationMixin, models.Model):
     ]
 ```
 
-```bash
+Example
 
-python manage.py shell
+```python
+In [1]: from decimal import Decimal
+
+in [2]: from django.contrib.auth import get_user_model
+
+In [3]: from demo.models import TestModel
+
+In [4]: user = get_user_model().objects.create(username='test', is_active=True)
+
+In [5]: first_obj = TestModel.objects.create(user=user)
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
->>> from decimal import Decimal
->>> from django.contrib.auth import get_user_model
->>> from demo.models import TestModel
->>> user = get_user_model().objects.create(username='test', is_active=True)
->>> first_obj = TestModel.objects.create(user=user)
-...
+
 ValueError: {'__all__': ValidationError([u'Please provide a valid value for any of the following fields: Fixed price, Percentage, Amount'])}
-...
->>>first_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
-...
-ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
+
+In [6]: second_obj = TestModel.objects.create(user=user, amount=Decimal('2'), fixed_price=Decimal('2'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
 ...
 
+ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
 ```
+
 
 Model Attributes
 ----------------
@@ -233,7 +263,8 @@ OPTIONAL_TOGGLE_FIELDS = []
 
 # Validates that all fields are present if the condition is True
 CONDITIONAL_REQUIRED_FIELDS = []
-# Validated at least one not both fields are provided if the condition is True.
+
+# Validates at least one, not both fields is provided if the condition is True.
 CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 
 ```
@@ -241,7 +272,7 @@ CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
 License
 -------
 
-django-extra-field-validation is distributed under the terms of both
+django-dynamic-model-validation is distributed under the terms of both
 
   - [MIT License](https://choosealicense.com/licenses/mit)
   - [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
@@ -250,4 +281,6 @@ at your option.
 
 TODO's
 ------
+  - Support `CONDITIONAL_NON_REQUIRED_TOGGLE_FIELDS`
+  - Support `CONDITIONAL_NON_REQUIRED_FIELDS`
   - Move to support class and function based validators that use the instance object this should enable cross field model validation.
