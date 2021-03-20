@@ -7,7 +7,7 @@ from six import python_2_unicode_compatible
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from dynamic_validator import ModelFieldRequiredMixin
+from dynamic_validator import FieldValidationMixin
 
 if django.VERSION <= (3, 0):
     from django.utils.translation import ugettext_noop as _
@@ -18,7 +18,7 @@ UserModel = get_user_model()
 
 
 @python_2_unicode_compatible
-class TestModel(ModelFieldRequiredMixin, models.Model):
+class TestModel(FieldValidationMixin, models.Model):
     """Ensure that at least one of the following fields are provided."""
 
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE)

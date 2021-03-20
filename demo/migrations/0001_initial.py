@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ),
             ],
             bases=(
-                dynamic_validator.field_validation.validator.ModelFieldRequiredMixin,
+                dynamic_validator.field_validation.validator.FieldValidationMixin,
                 models.Model,
             ),
         ),

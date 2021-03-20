@@ -1,1 +1,1 @@
-from .validator import ModelFieldRequiredMixin  # noqa
+from .validator import FieldValidationMixin  # noqa

@@ -14,7 +14,7 @@ exclude tox.ini
 prune demo
 exclude manage.py
 exclude dynamic_validator/tests.py
-recursive-exclude django_dynamic_model_validation *.py
+recursive-exclude django_extra_field_validation *.py
 include LICENSE-APACHE
 include LICENSE-MIT
 include README.rst

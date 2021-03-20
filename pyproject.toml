@@ -1,11 +1,11 @@
 [metadata]
-name = 'django-dynamic-model-validation'
+name = 'django-extra-field-validation'
 version = '0.0.1'
 description = ''
 author = 'Tonye Jack'
 author_email = 'jtonye@ymail.com'
 license = 'MIT/Apache-2.0'
-url = 'https://github.com/jackton1/django-dynamic-model-validation.git'
+url = 'https://github.com/jackton1/django-extra-field-validation.git'
 
 [requires]
 python_version = ['2.7', '3.5', '3.6', 'pypy', 'pypy3']

@@ -54,9 +54,9 @@ else:
 
 
 setup(
-    name="django-dynamic-model-validation",
+    name="django-extra-field-validation",
     version="1.0.0",
-    description="Extra django model validation.",
+    description="Extra django field validation.",
     python_requires=">=2.6",
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
@@ -64,7 +64,7 @@ setup(
     author_email="jtonye@ymail.com",
     maintainer="Tonye Jack",
     maintainer_email="jtonye@ymail.com",
-    url="https://github.com/jackton1/django-dynamic-model-validation.git",
+    url="https://github.com/jackton1/django-extra-field-validation.git",
     license="MIT/Apache-2.0",
     keywords=[
         "django",

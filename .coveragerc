@@ -3,7 +3,7 @@ source = dynamic_validator
 omit =
     .tox
     demo/apps.py
-    django_dynamic_model_validation/wsgi.py
+    django_extra_field_validation/wsgi.py
     setup.py
     manage.py
     dynamic_validator/apps.py
