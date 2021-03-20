@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import dynamic_validator.field_validation.validator
+import extra_validator.field_validation.validator
 
 
 class Migration(migrations.Migration):
@@ -56,7 +56,7 @@ class Migration(migrations.Migration):
                 ),
             ],
             bases=(
-                dynamic_validator.field_validation.validator.FieldValidationMixin,
+                extra_validator.field_validation.validator.FieldValidationMixin,
                 models.Model,
             ),
         ),

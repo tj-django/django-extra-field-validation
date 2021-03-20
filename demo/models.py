@@ -7,7 +7,7 @@ from six import python_2_unicode_compatible
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 if django.VERSION <= (3, 0):
     from django.utils.translation import ugettext_noop as _

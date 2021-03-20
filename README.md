@@ -41,7 +41,7 @@ This provides model level validation which includes:
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 
 class TestModel(FieldValidationMixin, models.Model):
@@ -76,7 +76,7 @@ ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amoun
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 
 class TestModel(FieldValidationMixin, models.Model):
@@ -108,7 +108,7 @@ ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'
 ```py
 
 from django.db import models
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 
 class TestModel(FieldValidationMixin, models.Model):
@@ -148,7 +148,7 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 from django.db import models
 from django.conf import settings
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 
 class TestModel(FieldValidationMixin, models.Model):
@@ -193,7 +193,7 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 from django.db import models
 from django.conf import settings
-from dynamic_validator import FieldValidationMixin
+from extra_validator import FieldValidationMixin
 
 
 class TestModel(FieldValidationMixin, models.Model):

@@ -1,13 +1,13 @@
 [run]
-source = dynamic_validator
+source = extra_validator
 omit =
     .tox
     demo/apps.py
     django_extra_field_validation/wsgi.py
     setup.py
     manage.py
-    dynamic_validator/apps.py
-    dynamic_validator/tests.py
+    extra_validator/apps.py
+    extra_validator/tests.py
 branch = True
 
 [report]

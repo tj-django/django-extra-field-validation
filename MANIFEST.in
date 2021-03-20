@@ -1,7 +1,7 @@
 # added by check_manifest.py
 prune test*.py
-prune dynamic_validator/tests.py
-recursive-include dynamic_validator *.py
+prune extra_validator/tests.py
+recursive-include extra_validator *.py
 include *.py
 exclude *.toml
 include *.txt
@@ -13,7 +13,7 @@ exclude pytest.ini
 exclude tox.ini
 prune demo
 exclude manage.py
-exclude dynamic_validator/tests.py
+exclude extra_validator/tests.py
 recursive-exclude django_extra_field_validation *.py
 include LICENSE-APACHE
 include LICENSE-MIT
