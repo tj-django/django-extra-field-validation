@@ -4,7 +4,7 @@ from django.test import TestCase
 User = get_user_model()
 
 
-class ModelFieldValidationTestCase(TestCase):
+class FieldValidationTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
         cls.super_user = User.objects.create(
