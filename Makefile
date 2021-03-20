@@ -49,7 +49,7 @@ update-requirements:  ## Updates the requirement.txt adding missing package depe
 	@$(PIP_COMPILE)
 
 release-to-pypi: clean-build increase-version  ## Release project to pypi
-	@$(PYTHON_PIP) install -U twine
+	@$(PYTHON_PIP) install -U twine wheel
 	@$(PYTHON) setup.py sdist bdist_wheel
 	@twine check dist/*
 	@twine upload dist/*
