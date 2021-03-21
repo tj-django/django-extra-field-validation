@@ -1,8 +1,24 @@
 # Changelog
 
-## [Unreleased](https://github.com/tj-django/django-extra-field-validation/tree/HEAD)
+## [v1.1.1](https://github.com/tj-django/django-extra-field-validation/tree/v1.1.1) (2021-03-21)
 
-[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.0.0...HEAD)
+[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.1.0...v1.1.1)
+
+## [v1.1.0](https://github.com/tj-django/django-extra-field-validation/tree/v1.1.0) (2021-03-21)
+
+[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.0.2...v1.1.0)
+
+**Merged pull requests:**
+
+- Updated docs [\#120](https://github.com/tj-django/django-extra-field-validation/pull/120) ([github-actions[bot]](https://github.com/apps/github-actions))
+
+## [v1.0.2](https://github.com/tj-django/django-extra-field-validation/tree/v1.0.2) (2021-03-20)
+
+[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.0.1...v1.0.2)
+
+## [v1.0.1](https://github.com/tj-django/django-extra-field-validation/tree/v1.0.1) (2021-03-20)
+
+[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.0.0...v1.0.1)
 
 **Closed issues:**
 
@@ -15,7 +31,6 @@
 - Update wearerequired/lint-action action to v1.9.0 [\#116](https://github.com/tj-django/django-extra-field-validation/pull/116) ([renovate[bot]](https://github.com/apps/renovate))
 - Updated docs [\#115](https://github.com/tj-django/django-extra-field-validation/pull/115) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Update wearerequired/lint-action action to v1.8.0 [\#114](https://github.com/tj-django/django-extra-field-validation/pull/114) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency bump2version to v1 [\#113](https://github.com/tj-django/django-extra-field-validation/pull/113) ([renovate[bot]](https://github.com/apps/renovate))
 - Updated docs [\#112](https://github.com/tj-django/django-extra-field-validation/pull/112) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Update CHANGELOG [\#111](https://github.com/tj-django/django-extra-field-validation/pull/111) ([jackton1](https://github.com/jackton1))
 
@@ -29,6 +44,7 @@
 
 **Merged pull requests:**
 
+- Update dependency bump2version to v1 [\#113](https://github.com/tj-django/django-extra-field-validation/pull/113) ([renovate[bot]](https://github.com/apps/renovate))
 - Updated docs [\#109](https://github.com/tj-django/django-extra-field-validation/pull/109) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Update to use bump2version [\#108](https://github.com/tj-django/django-extra-field-validation/pull/108) ([jackton1](https://github.com/jackton1))
 - Increased test coverage and update tox config. [\#106](https://github.com/tj-django/django-extra-field-validation/pull/106) ([jackton1](https://github.com/jackton1))
