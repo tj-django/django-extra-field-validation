@@ -19,7 +19,7 @@ def field_to_str(fields):
     )
 
 
-class FieldValidationMixin:
+class FieldValidationMixin(object):
     # A list of required fields
     REQUIRED_FIELDS = []
     #  A list of fields with at most one required.
