@@ -67,6 +67,9 @@ increase-version: clean-build guard-PART  ## Bump the project version (using the
 # ----------------------------------------------------------
 # --------- Run project Test -------------------------------
 # ----------------------------------------------------------
+test:
+	@$(MANAGE_PY) test
+
 tox: install-test  ## Run tox test
 	@tox
 
