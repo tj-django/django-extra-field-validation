@@ -64,7 +64,7 @@ setup(
     author_email="jtonye@ymail.com",
     maintainer="Tonye Jack",
     maintainer_email="jtonye@ymail.com",
-    url="https://github.com/jackton1/django-extra-field-validation.git",
+    url="https://github.com/tj-django/django-extra-field-validation.git",
     license="MIT/Apache-2.0",
     keywords=[
         "django",
