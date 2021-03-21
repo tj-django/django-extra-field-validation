@@ -8,7 +8,6 @@ django-extra-field-validation
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/context:python)
 
 
-
 Introduction
 ------------
 This package aims to provide tools needed to define custom field validation logic which can be used independently or with
