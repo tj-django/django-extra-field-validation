@@ -2,8 +2,8 @@
 # e.g.:
 - flake8
 - black
-- pycodestyle
-- pydocstyle
-- pyflakes
-- bandit
-- isort
+# - pycodestyle
+# - pydocstyle
+# - pyflakes
+# - bandit
+# - isort
