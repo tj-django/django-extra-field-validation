@@ -242,29 +242,35 @@ Model Attributes
 This is done using model attributes below.
 
 ```py
-
-#  Using a list/iterable: [['a', 'b'], ['c', 'd']] which validates that a field from each item is provided.
-REQUIRED_TOGGLE_FIELDS = []
-
-# Using a list/iterable validates that all fields are provided.
+    
+# A list of required fields
 REQUIRED_FIELDS = []
 
-# Optional toggle fields list: [['a', 'b']] which runs the validation only when any of the fields are present.
+#  A list of fields with at most one required.
+REQUIRED_TOGGLE_FIELDS = []
+
+# A list of field with at least one required.
+REQUIRED_MIN_FIELDS = []
+
+# Optional list of fields with at most one required.
 OPTIONAL_TOGGLE_FIELDS = []
 
-# Conditional field validation using a list of tuples the condition which could be boolean or a callable and the list/iterable of fields that are required if the condition evaluates to `True`.
-# [(condition, [fields]), (condition, fields)]
-
-# Using a callable CONDITIONAL_REQUIRED_FIELDS = [(lambda instance: instance.is_admin, ['a', 'd'])]
-# Using a boolean CONDITIONAL_REQUIRED_TOGGLE_FIELDS = [(True, ['b', 'c']), (True, ['d', f])]
-# asserts that either 'b' or 'c' is provided and either 'd' or 'f'.
-# (Note: This can also be handled using REQUIRED_FIELDS/REQUIRED_TOGGLE_FIELDS)
-
-# Validates that all fields are present if the condition is True
+# Conditional field required list of tuples the condition a boolean or a callable.
+# [(lambda user: user.is_admin, ['first_name', 'last_name'])] : Both 'first_name' or 'last_name'
+# If condition is True ensure that all fields are set
 CONDITIONAL_REQUIRED_FIELDS = []
 
-# Validates at least one, not both fields is provided if the condition is True.
+# [(lambda user: user.is_admin, ['first_name', 'last_name'])] : Either 'first_name' or 'last_name'
+# If condition is True ensure that at most one field is set
 CONDITIONAL_REQUIRED_TOGGLE_FIELDS = []
+
+# [(lambda user: user.is_admin, ['first_name', 'last_name'])] : At least 'first_name' or 'last_name' provided or both
+# If condition is True ensure that at least one field is set
+CONDITIONAL_REQUIRED_MIN_FIELDS = []
+
+# [(lambda user: user.is_admin, ['first_name', 'last_name'])] : Both 'first_name' and 'last_name' isn't provided
+# If condition is True ensure none of the fields are provided
+CONDITIONAL_REQUIRED_EMPTY_FIELDS = []
 
 ```
 
