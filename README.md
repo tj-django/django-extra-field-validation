@@ -242,7 +242,6 @@ Model Attributes
 This is done using model attributes below.
 
 ```py
-    
 # A list of required fields
 REQUIRED_FIELDS = []
 
