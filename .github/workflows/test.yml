@@ -26,3 +26,4 @@ jobs:
       run: tox
       env:
         DJANGO_SETTINGS_MODULE: django_extra_field_validation.settings
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
