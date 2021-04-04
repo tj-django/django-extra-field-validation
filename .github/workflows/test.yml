@@ -30,7 +30,7 @@ jobs:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
     
     - name: Coverage Badge
-      uses: tj-actions/coverage-badge-py@v1.1
+      uses: tj-actions/coverage-badge-py@v1.2
     
     - name: Verify Changed files
       uses: tj-actions/verify-changed-files@v5.1
