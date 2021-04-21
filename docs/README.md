@@ -18,10 +18,6 @@ will only be handled at the model level.
 Installation
 ------------
 
-django-extra-field-validation is distributed on [PyPI](https://pypi.org) as a universal
-wheel and is available on Linux/macOS and Windows and supports
-Python 2.7/3.5+ and PyPy.
-
 ```shell script
 pip install django-extra-field-validation
 ```
