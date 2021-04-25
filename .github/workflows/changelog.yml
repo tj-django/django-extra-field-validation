@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate CHANGELOG
-        uses: tj-actions/github-changelog-generator@v1.3
+        uses: tj-actions/github-changelog-generator@v1.6
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
