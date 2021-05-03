@@ -15,6 +15,8 @@ jobs:
         github.actor == 'dependabot-preview' ||
         github.actor == 'renovate[bot]' ||
         github.actor == 'renovate' ||
+        github.actor == 'pre-commit-ci[bot]' ||
+        github.actor == 'pre-commit-ci' ||
         github.actor == 'pyup-bot'
       with:
         github-token: ${{ secrets.PAT_TOKEN }}
