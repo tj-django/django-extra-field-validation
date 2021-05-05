@@ -5,4 +5,4 @@
 #    pip-compile
 #
 future==0.18.2            # via django-extra-field-validation (setup.py)
-six==1.15.0               # via django-extra-field-validation (setup.py)
+six==1.16.0               # via django-extra-field-validation (setup.py)
