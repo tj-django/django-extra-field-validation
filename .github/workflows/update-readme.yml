@@ -3,7 +3,7 @@ name: Sync README with docs.
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   sync-readme:
