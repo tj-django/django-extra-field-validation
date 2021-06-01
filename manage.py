@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import os
-from future.utils import raise_from
 import sys
+
+from future.utils import raise_from
 
 if __name__ == "__main__":
     os.environ.setdefault(
