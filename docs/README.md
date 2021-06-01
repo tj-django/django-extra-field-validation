@@ -15,6 +15,7 @@ django forms, test cases, API implementation or any model operation that require
 This can also be extended by defining table check constraints if needed but currently validation
 will only be handled at the model level.
 
+
 Installation
 ------------
 
