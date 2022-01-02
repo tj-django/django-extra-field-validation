@@ -2,9 +2,11 @@ name: CI Test
 
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - "README.md"
+      - "docs/**"
 
 jobs:
   build:
