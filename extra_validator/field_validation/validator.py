@@ -168,9 +168,8 @@ class FieldValidationMixin(object):
                         elif validate_one and len(fields) - 1 != len(
                             list(missing_fields)
                         ):
-                            msg = (
-                                "Please provide only one of the following fields: {fields}"
-                                .format(fields=field_to_str(fields))
+                            msg = "Please provide only one of the following fields: {fields}".format(
+                                fields=field_to_str(fields)
                             )
                             errors.update(self._error_as_dict(NON_FIELD_ERRORS, msg))
 
