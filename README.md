@@ -148,7 +148,7 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 ```
 
-### Conditionally require fields
+### Conditionally require all fields
 
 ```py
 
