@@ -129,8 +129,8 @@ class FieldValidationMixin(object):
                                     "Please provide a valid value for the following fields: "
                                     "{fields}"
                                     if not validate_one
-                                    else "Please provide a valid value for any of the following fields: "
-                                    "{fields}".format(fields=field_to_str(fields))
+                                    else "Please provide a valid value for any of the following "
+                                    "fields: {fields}".format(fields=field_to_str(fields))
                                 )
                                 errors.update(
                                     self._error_as_dict(NON_FIELD_ERRORS, msg)
