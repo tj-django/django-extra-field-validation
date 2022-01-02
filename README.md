@@ -15,10 +15,10 @@
 *   [Usage](#usage)
 
     *   [Require all fields](#require-all-fields)
-    *   [Require at least one field](#require-at-least-one-field)
+    *   [Require at least one field in a collection](#require-at-least-one-field-in-a-collection)
     *   [Optionally require at least one field in a collection](#optionally-require-at-least-one-field-in-a-collection)
     *   [Conditional require fields](#conditional-require-fields)
-    *   [Conditional require optional fields](#conditional-require-optional-fields)
+    *   [Conditional require at least one field in a collection](#conditional-require-at-least-one-field-in-a-collection)
 
 *   [Model Attributes](#model-attributes)
 
