@@ -74,7 +74,7 @@ ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'
 
 ```
 
-### Require at least one field
+### Require at least one field in a collection
 
 ```py
 
@@ -192,7 +192,7 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 ```
 
-### Conditional require optional fields
+### Conditional require at least one field in a collection
 
 ```py
 
