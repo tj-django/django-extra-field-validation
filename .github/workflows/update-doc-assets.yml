@@ -1,4 +1,4 @@
-name: Sync README with docs.
+name: Sync doc assets.
 
 on:
   push:
@@ -9,13 +9,41 @@ jobs:
   sync-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Run remark
+        uses: tj-actions/remark@v1.7
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v8
+        id: verify_changed_files
+        with:
+          files: |
+            README.md
+
+      - name: README.md changed
+        if: steps.verify_changed_files.outputs.files_changed == 'true'
+        run: |
+          echo "README.md has uncommited changes"
+          exit 1
+
+      - name: Create Pull Request
+        if: failure()
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: "main"
+          title: "Updated README.md"
+          branch: "chore/update-readme"
+          commit-message: "Updated README.md"
+          body: "Updated README.md"
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Copy README
         run: |
           cp -f README.md docs/README.md
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3.12.0
         with:
