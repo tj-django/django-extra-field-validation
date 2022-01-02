@@ -17,8 +17,8 @@
     *   [Require all fields](#require-all-fields)
     *   [Require at least one field in a collection](#require-at-least-one-field-in-a-collection)
     *   [Optionally require at least one field in a collection](#optionally-require-at-least-one-field-in-a-collection)
-    *   [Conditional require fields](#conditional-require-fields)
-    *   [Conditional require at least one field in a collection](#conditional-require-at-least-one-field-in-a-collection)
+    *   [Conditionally require all fields](#conditionally-require-all-fields)
+    *   [Conditionally require at least one field in a collection](#conditionally-require-at-least-one-field-in-a-collection)
 
 *   [Model Attributes](#model-attributes)
 
@@ -148,7 +148,7 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 ```
 
-### Conditional require fields
+### Conditionally require all fields
 
 ```py
 
@@ -192,7 +192,7 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 ```
 
-### Conditional require at least one field in a collection
+### Conditionally require at least one field in a collection
 
 ```py
 
