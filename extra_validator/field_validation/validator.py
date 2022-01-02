@@ -137,10 +137,8 @@ class FieldValidationMixin(object):
                                 )
                             else:
                                 field = fields[0]
-                                msg = (
-                                    'Please provide a value for: "{field}"'.format(
-                                        field=field
-                                    )
+                                msg = 'Please provide a value for: "{field}"'.format(
+                                    field=field
                                 )
                                 errors.update(self._error_as_dict(field, msg))
                             break
@@ -149,9 +147,7 @@ class FieldValidationMixin(object):
                             msg = "Please omit changes to the following fields: {fields}".format(
                                 fields=field_to_str(fields)
                             )
-                            errors.update(
-                                self._error_as_dict(NON_FIELD_ERRORS, msg)
-                            )
+                            errors.update(self._error_as_dict(NON_FIELD_ERRORS, msg))
                             break
 
                         missing_fields = [
@@ -160,18 +156,12 @@ class FieldValidationMixin(object):
                             if field_name not in field_value_map.keys()
                         ]
 
-                        if (
-                            not validate_one
-                            and not at_least_one
-                            and not none_provided
-                        ):
+                        if not validate_one and not at_least_one and not none_provided:
                             for missing_field in missing_fields:
                                 msg = 'Please provide a value for: "{missing_field}"'.format(
                                     missing_field=missing_field
                                 )
-                                errors.update(
-                                    self._error_as_dict(missing_field, msg)
-                                )
+                                errors.update(self._error_as_dict(missing_field, msg))
 
                         elif validate_one and len(fields) - 1 != len(
                             list(missing_fields)
@@ -179,9 +169,7 @@ class FieldValidationMixin(object):
                             msg = "Please provide only one of the following fields: {fields}".format(
                                 fields=field_to_str(fields)
                             )
-                            errors.update(
-                                self._error_as_dict(NON_FIELD_ERRORS, msg)
-                            )
+                            errors.update(self._error_as_dict(NON_FIELD_ERRORS, msg))
 
             if errors:
                 raise error_class(errors)
