@@ -148,7 +148,7 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 ```
 
-### Conditional require fields
+### Conditionally require fields
 
 ```py
 
@@ -192,7 +192,7 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 ```
 
-### Conditional require at least one field in a collection
+### Conditionally require at least one field in a collection
 
 ```py
 
