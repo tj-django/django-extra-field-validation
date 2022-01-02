@@ -7,8 +7,10 @@ django-extra-field-validation
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-extra-field-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-extra-field-validation&utm_campaign=Badge_Coverage)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/context:python)
 
-Introduction
-------------
+
+## Table of Contents
+
+## Background
 This package aims to provide tools needed to define custom field validation logic which can be used independently or with
 django forms, test cases, API implementation or any model operation that requires saving data to the database.
 
@@ -16,22 +18,47 @@ This can also be extended by defining table check constraints if needed but curr
 will only be handled at the model level.
 
 
-Installation
-------------
+## Installation
 
 ```shell script
 pip install django-extra-field-validation
 ```
 
-Usage
------
-This provides model level validation which includes:
+## Usage
 
-  - [Required field validation](#require-a-single-field)
-  - [Optional field validation](#optionally-required-fields)
-  - [Conditional field validation](#conditional-required-fields)
+### Require all fields
 
-### Require a single field
+```py
+
+from django.db import models
+from extra_validator import FieldValidationMixin
+
+
+class TestModel(FieldValidationMixin, models.Model):
+    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
+    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
+
+    REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
+```
+
+Example
+
+```python
+In [1]: from decimal import Decimal
+
+In [2]: from demo.models import TestModel
+
+In [3]: TestModel.objects.create(fixed_price=Decimal('3.00'))
+---------------------------------------------------------------------------
+ValueError                   Traceback (most recent call last)
+...
+
+ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
+
+```
+
+### Require at least one field
 
 ```py
 
@@ -66,39 +93,7 @@ ValueError: {'fixed_price': ValidationError([u'Please provide only one of: Amoun
 
 ```
 
-### Require all fields
-
-```py
-
-from django.db import models
-from extra_validator import FieldValidationMixin
-
-
-class TestModel(FieldValidationMixin, models.Model):
-    amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
-    fixed_price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
-    percentage = models.DecimalField(max_digits=3, decimal_places=0, null=True, blank=True)
-
-    REQUIRED_FIELDS = ['amount']  # Always requires an amount to create the instance.
-```
-
-Example
-
-```python
-In [1]: from decimal import Decimal
-
-In [2]: from demo.models import TestModel
-
-In [3]: TestModel.objects.create(fixed_price=Decimal('3.00'))
----------------------------------------------------------------------------
-ValueError                   Traceback (most recent call last)
-...
-
-ValueError: {'amount': ValidationError([u'Please provide a value for: "amount".'])}
-
-```
-
-### Optionally required fields
+### Optionally require at least one field in a collection
 
 ```py
 
@@ -137,7 +132,7 @@ ValueError: {'percentage': ValidationError([u'Please provide only one of: Fixed 
 
 ```
 
-### Conditional required fields
+### Conditional require fields
 
 ```py
 
@@ -182,7 +177,7 @@ ValueError: {u'percentage': ValidationError([u'Please provide a value for: "perc
 
 ```
 
-### Conditional required optional fields
+### Conditional require optional fields
 
 ```py
 
@@ -232,8 +227,7 @@ ValueError: {'__all__': ValidationError([u'Please provide only one of the follow
 ```
 
 
-Model Attributes
-----------------
+## Model Attributes
 
 This is done using model attributes below.
 
@@ -269,8 +263,7 @@ CONDITIONAL_REQUIRED_EMPTY_FIELDS = []
 
 ```
 
-License
--------
+## License
 
 django-extra-field-validation is distributed under the terms of both
 
@@ -279,8 +272,7 @@ django-extra-field-validation is distributed under the terms of both
 
 at your option.
 
-TODO's
-------
-  - Support `CONDITIONAL_NON_REQUIRED_TOGGLE_FIELDS`
-  - Support `CONDITIONAL_NON_REQUIRED_FIELDS`
-  - Move to support class and function based validators that use the instance object this should enable cross field model validation.
+## TODO's
+  - [ ] Support `CONDITIONAL_NON_REQUIRED_TOGGLE_FIELDS`
+  - [ ] Support `CONDITIONAL_NON_REQUIRED_FIELDS`
+  - [ ] Move to support class and function based validators that use the instance object this should enable cross field model validation.
