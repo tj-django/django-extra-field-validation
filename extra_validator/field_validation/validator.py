@@ -107,88 +107,75 @@ class FieldValidationMixin(object):
         field_sets = field_sets or self.CONDITIONAL_REQUIRED_FIELDS
 
         if all([field_sets, isinstance(field_sets, (list, tuple))]):
-            try:
-                for condition, fields in field_sets:
-                    field_names = list(filter(lambda f: f not in exclude, fields))
-                    if field_names:
-                        is_valid_condition = (
-                            condition if isinstance(condition, bool) else False
-                        )
-                        if callable(condition):
-                            is_valid_condition = condition(self)
+            for condition, fields in field_sets:
+                field_names = list(filter(lambda f: f not in exclude, fields))
+                if field_names:
+                    is_valid_condition = (
+                        condition if isinstance(condition, bool) else False
+                    )
+                    if callable(condition):
+                        is_valid_condition = condition(self)
 
-                        field_value_map = {
-                            field_name: getattr(self, field_name)
-                            for field_name in field_names
-                            if getattr(self, field_name) not in self.EMPTY_VALUES
-                        }
+                    field_value_map = {
+                        field_name: getattr(self, field_name)
+                        for field_name in field_names
+                        if getattr(self, field_name) not in self.EMPTY_VALUES
+                    }
 
-                        if is_valid_condition:
-                            if not field_value_map and not none_provided:
-                                if len(fields) > 1:
-                                    msg = (
-                                        "Please provide a valid value for the following fields: "
-                                        "{fields}"
-                                        if not validate_one
-                                        else "Please provide a valid value for any of the following fields: "
-                                        "{fields}".format(fields=field_to_str(fields))
+                    if is_valid_condition:
+                        if not field_value_map and not none_provided:
+                            if len(fields) > 1:
+                                msg = (
+                                    "Please provide a valid value for the following fields: "
+                                    "{fields}"
+                                    if not validate_one
+                                    else "Please provide a valid value for any of the following "
+                                    "fields: {fields}".format(
+                                        fields=field_to_str(fields)
                                     )
-                                    errors.update(
-                                        self._error_as_dict(NON_FIELD_ERRORS, msg)
-                                    )
-                                else:
-                                    field = fields[0]
-                                    msg = (
-                                        'Please provide a value for: "{field}"'.format(
-                                            field=field
-                                        )
-                                    )
-                                    errors.update(self._error_as_dict(field, msg))
-                                break
-
-                            if field_value_map and none_provided:
-                                msg = "Please omit changes to the following fields: {fields}".format(
-                                    fields=field_to_str(fields)
                                 )
                                 errors.update(
                                     self._error_as_dict(NON_FIELD_ERRORS, msg)
                                 )
-                                break
-
-                            missing_fields = [
-                                field_name
-                                for field_name in fields
-                                if field_name not in field_value_map.keys()
-                            ]
-
-                            if (
-                                not validate_one
-                                and not at_least_one
-                                and not none_provided
-                            ):
-                                for missing_field in missing_fields:
-                                    msg = 'Please provide a value for: "{missing_field}"'.format(
-                                        missing_field=missing_field
-                                    )
-                                    errors.update(
-                                        self._error_as_dict(missing_field, msg)
-                                    )
-
-                            elif validate_one and len(fields) - 1 != len(
-                                list(missing_fields)
-                            ):
-                                msg = "Please provide only one of the following fields: {fields}".format(
-                                    fields=field_to_str(fields)
+                            else:
+                                field = fields[0]
+                                msg = 'Please provide a value for: "{field}"'.format(
+                                    field=field
                                 )
-                                errors.update(
-                                    self._error_as_dict(NON_FIELD_ERRORS, msg)
-                                )
+                                errors.update(self._error_as_dict(field, msg))
+                            break
 
-            except ValueError:
-                pass
-            else:
-                if errors:
-                    raise error_class(errors)
+                        if field_value_map and none_provided:
+                            msg = "Please omit changes to the following fields: {fields}".format(
+                                fields=field_to_str(fields)
+                            )
+                            errors.update(self._error_as_dict(NON_FIELD_ERRORS, msg))
+                            break
+
+                        missing_fields = [
+                            field_name
+                            for field_name in fields
+                            if field_name not in field_value_map.keys()
+                        ]
+
+                        if not validate_one and not at_least_one and not none_provided:
+                            for missing_field in missing_fields:
+                                msg = 'Please provide a value for: "{missing_field}"'.format(
+                                    missing_field=missing_field
+                                )
+                                errors.update(self._error_as_dict(missing_field, msg))
+
+                        elif validate_one and len(fields) - 1 != len(
+                            list(missing_fields)
+                        ):
+                            msg = (
+                                "Please provide only one of the following fields: "
+                                "{fields}".format(fields=field_to_str(fields))
+                            )
+                            errors.update(self._error_as_dict(NON_FIELD_ERRORS, msg))
+
+            if errors:
+                raise error_class(errors)
 
     def _clean_required_and_optional_fields(self, exclude=None, context=None):
         """Provide extra validation for fields that are required and single selection fields."""
