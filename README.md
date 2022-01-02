@@ -1,22 +1,38 @@
-django-extra-field-validation
-===============================
+# django-extra-field-validation
 
 ![PyPI](https://img.shields.io/pypi/v/django-extra-field-validation) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-extra-field-validation) ![PyPI - Django Version](https://img.shields.io/pypi/djversions/django-extra-field-validation) [![Downloads](https://pepy.tech/badge/django-extra-field-validation)](https://pepy.tech/project/django-extra-field-validation)
 
 [![CI Test](https://github.com/tj-django/django-extra-field-validation/actions/workflows/test.yml/badge.svg)](https://github.com/tj-django/django-extra-field-validation/actions/workflows/test.yml)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tj-django/django-extra-field-validation&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tj-django/django-extra-field-validation&utm_campaign=Badge_Coverage)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-extra-field-validation.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/context:python)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tj-django/django-extra-field-validation\&utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tj-django/django-extra-field-validation\&utm_campaign=Badge_Coverage)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-extra-field-validation.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-extra-field-validation.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/context:python)
 
 ## Table of Contents
 
+*   [Background](#background)
+
+*   [Installation](#installation)
+
+*   [Usage](#usage)
+
+    *   [Require all fields](#require-all-fields)
+    *   [Require at least one field](#require-at-least-one-field)
+    *   [Optionally require at least one field in a collection](#optionally-require-at-least-one-field-in-a-collection)
+    *   [Conditional require fields](#conditional-require-fields)
+    *   [Conditional require optional fields](#conditional-require-optional-fields)
+
+*   [Model Attributes](#model-attributes)
+
+*   [License](#license)
+
+*   [TODO's](#todos)
+
 ## Background
+
 This package aims to provide tools needed to define custom field validation logic which can be used independently or with
 django forms, test cases, API implementation or any model operation that requires saving data to the database.
 
 This can also be extended by defining table check constraints if needed but currently validation
 will only be handled at the model level.
-
 
 ## Installation
 
@@ -156,7 +172,6 @@ class TestModel(FieldValidationMixin, models.Model):
 
 ```
 
-
 Example
 
 ```python
@@ -226,7 +241,6 @@ ValueError                   Traceback (most recent call last)
 ValueError: {'__all__': ValidationError([u'Please provide only one of the following fields: Fixed price, Percentage, Amount'])}
 ```
 
-
 ## Model Attributes
 
 This is done using model attributes below.
@@ -267,12 +281,13 @@ CONDITIONAL_REQUIRED_EMPTY_FIELDS = []
 
 django-extra-field-validation is distributed under the terms of both
 
-  - [MIT License](https://choosealicense.com/licenses/mit)
-  - [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
+*   [MIT License](https://choosealicense.com/licenses/mit)
+*   [Apache License, Version 2.0](https://choosealicense.com/licenses/apache-2.0)
 
 at your option.
 
 ## TODO's
-  - [ ] Support `CONDITIONAL_NON_REQUIRED_TOGGLE_FIELDS`
-  - [ ] Support `CONDITIONAL_NON_REQUIRED_FIELDS`
-  - [ ] Move to support class and function based validators that use the instance object this should enable cross field model validation.
+
+*   \[ ] Support `CONDITIONAL_NON_REQUIRED_TOGGLE_FIELDS`
+*   \[ ] Support `CONDITIONAL_NON_REQUIRED_FIELDS`
+*   \[ ] Move to support class and function based validators that use the instance object this should enable cross field model validation.
