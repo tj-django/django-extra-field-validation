@@ -31,7 +31,7 @@
 This package aims to provide tools needed to define custom field validation logic which can be used independently or with
 django forms, test cases, API implementation or any model operation that requires saving data to the database.
 
-This can also be extended by defining table check constraints if needed but currently validation
+This can also be extended by defining check constraints if needed but currently validation
 will only be handled at the model level.
 
 ## Installation
