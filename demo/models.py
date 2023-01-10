@@ -1,7 +1,6 @@
 import django
 from django.contrib.auth import get_user_model
 from django.db import models
-from six import python_2_unicode_compatible
 
 from extra_validator import FieldValidationMixin
 
