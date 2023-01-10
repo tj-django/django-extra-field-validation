@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 import django
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -16,7 +13,6 @@ else:
 UserModel = get_user_model()
 
 
-@python_2_unicode_compatible
 class TestModel(FieldValidationMixin, models.Model):
     """Ensure that at least one of the following fields are provided."""
 
