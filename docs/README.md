@@ -4,7 +4,6 @@
 
 [![CI Test](https://github.com/tj-django/django-extra-field-validation/actions/workflows/test.yml/badge.svg)](https://github.com/tj-django/django-extra-field-validation/actions/workflows/test.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tj-django/django-extra-field-validation\&utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/6973bc063f1142afb66d897261d8f8f5)](https://www.codacy.com/gh/tj-django/django-extra-field-validation/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tj-django/django-extra-field-validation\&utm_campaign=Badge_Coverage)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/tj-django/django-extra-field-validation.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/alerts/) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/tj-django/django-extra-field-validation.svg?logo=lgtm\&logoWidth=18)](https://lgtm.com/projects/g/tj-django/django-extra-field-validation/context:python)
 
 ## Table of Contents
 
