@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 import django
 from django.core import validators
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
