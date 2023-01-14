@@ -43,7 +43,7 @@ install-test: clean-build  ## Install test extra dependencies.
 install-dev: clean-build  ## Install development extra dependencies.
 	@echo "Installing development requirements..."
 	@$(PYTHON_PIP) install -e .'[development]' -r requirements.txt
-	
+
 install-deploy: clean-build  ## Install deploy extra dependencies.
 	@echo "Installing deploy extra requirements..."
 	@$(PYTHON_PIP) install -e .'[deploy]'
@@ -79,6 +79,7 @@ clean-test-all: clean-build  ## Clean build and test assets.
 	@rm -rf .tox/
 	@rm -rf .pytest_cache/
 	@rm test.db
+
 
 # -----------------------------------------------------------
 # --------- Docs ---------------------------------------
