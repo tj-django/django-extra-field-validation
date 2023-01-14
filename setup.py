@@ -54,7 +54,7 @@ else:
 
 setup(
     name="django-extra-field-validation",
-    version="1.1.2",
+    version="1.2.2",
     description="Extra django field validation.",
     python_requires=">=2.6",
     long_description=LONG_DESCRIPTION,
