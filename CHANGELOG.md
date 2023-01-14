@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.2.3](https://github.com/tj-django/django-extra-field-validation/tree/v1.2.3) (2023-01-14)
+
+[Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.2.2...v1.2.3)
+
+**Merged pull requests:**
+
+- Upgraded v1.2.1 → v1.2.2 [\#308](https://github.com/tj-django/django-extra-field-validation/pull/308) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.2](https://github.com/tj-django/django-extra-field-validation/tree/v1.2.2) (2023-01-14)
 
 [Full Changelog](https://github.com/tj-django/django-extra-field-validation/compare/v1.2.1...v1.2.2)
