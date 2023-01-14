@@ -59,7 +59,7 @@ increase-version: guard-PART  ## Increase project version
 	@bump2version $(PART)
 	@git switch -c main
 
-dist: clean  ## builds source and wheel package
+dist:  ## builds source and wheel package
 	@pip install build twine
 	@python -m build
 
