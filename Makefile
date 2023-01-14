@@ -43,26 +43,28 @@ install-test: clean-build  ## Install test extra dependencies.
 install-dev: clean-build  ## Install development extra dependencies.
 	@echo "Installing development requirements..."
 	@$(PYTHON_PIP) install -e .'[development]' -r requirements.txt
+	
+install-deploy: clean-build  ## Install deploy extra dependencies.
+	@echo "Installing deploy extra requirements..."
+	@$(PYTHON_PIP) install -e .'[deploy]'
 
 update-requirements:  ## Updates the requirement.txt adding missing package dependencies
 	@echo "Syncing the package requirements.txt..."
 	@$(PIP_COMPILE)
 
-release-to-pypi: clean-build increase-version  ## Release project to pypi
-	@$(PYTHON_PIP) install -U twine wheel
-	@$(PYTHON) setup.py sdist bdist_wheel
-	@twine check dist/*
-	@twine upload dist/*
-	@git push --tags
-	@git push
+# ----------------------------------------------------------
+# ---------- Release the project to PyPI -------------------
+# ----------------------------------------------------------
+increase-version: guard-PART  ## Increase project version
+	@bump2version $(PART)
+	@git switch -c main
 
-# ----------------------------------------------------------
-# ---------- Upgrade project version (bump2version)  --------
-# ----------------------------------------------------------
-increase-version: clean-build guard-PART  ## Bump the project version (using the $PART env: defaults to 'patch').
-	@echo "Increasing project '$(PART)' version..."
-	@$(PYTHON_PIP) install -q -e .'[deploy]'
-	@bump2version --verbose $(PART)
+dist: clean  ## builds source and wheel package
+	@pip install build twine
+	@python -m build
+
+release: dist  ## package and upload a release
+	@twine upload dist/*
 
 # ----------------------------------------------------------
 # --------- Run project Test -------------------------------
