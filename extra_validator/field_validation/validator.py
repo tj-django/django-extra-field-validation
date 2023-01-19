@@ -125,7 +125,7 @@ class FieldValidationMixin(object):
                             if len(fields) > 1:
                                 msg = (
                                     "Please provide a valid value for the following fields: "
-                                    "{fields}"
+                                    f"{fields}"
                                     if not validate_one
                                     else "Please provide a valid value for any of the following "
                                     "fields: {fields}".format(
