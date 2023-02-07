@@ -9,7 +9,6 @@ import extra_validator.field_validation.validator
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
