@@ -6,7 +6,7 @@
 #
 asgiref==3.6.0
     # via django
-django==4.1.7
+django==4.2
     # via django-extra-field-validation (setup.py)
 sqlparse==0.4.3
     # via django
