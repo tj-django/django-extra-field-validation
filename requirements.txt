@@ -8,5 +8,5 @@ asgiref==3.6.0
     # via django
 django==4.2
     # via django-extra-field-validation (setup.py)
-sqlparse==0.4.3
+sqlparse==0.4.4
     # via django
